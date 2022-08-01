@@ -28,14 +28,15 @@ namespace CuaHangHoa
         private void dgvHangHoa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             txtMaHoa.ReadOnly = true;
-            int i;
-            i = dgvHangHoa.CurrentRow.Index;
-            txtMaHoa.Text = dgvHangHoa.Rows[i].Cells[0].Value.ToString();
-            txtTenHoa.Text = dgvHangHoa.Rows[i].Cells[1].Value.ToString();
-            txtGiaGoc.Text = dgvHangHoa.Rows[i].Cells[2].Value.ToString();
-            txtGiaBan.Text=dgvHangHoa.Rows[i].Cells[3].Value.ToString();
-            txtSoLuongTon.Text = dgvHangHoa.Rows[i].Cells[4].Value.ToString();
-            cbMaLoai.Text = dgvHangHoa.Rows[i].Cells[5].Value.ToString();
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvHangHoa.Rows[e.RowIndex];
+            txtMaHoa.Text = Convert.ToString(row.Cells["MaHoa"].Value);
+            txtTenHoa.Text = Convert.ToString(row.Cells["TenHoa"].Value);
+            txtGiaGoc.Text = Convert.ToString(row.Cells["GiaGoc"].Value);
+            txtGiaBan.Text = Convert.ToString(row.Cells["GiaGoc"].Value);
+            txtSoLuongTon.Text = Convert.ToString(row.Cells["SoLuongTon"].Value);
+            cbMaLoai.Text = Convert.ToString(row.Cells["MaLoai"].Value);
+
         }
         
         private void fHangHoa_Load(object sender, EventArgs e)
@@ -58,81 +59,134 @@ namespace CuaHangHoa
         {
             connection.Close();   
         }
-
-        private void btnThem_Click(object sender, EventArgs e)
+        
+        private bool ThongTinHangHoa()
         {
-            DialogResult =  MessageBox.Show("BẠN CÓ MUỐN THÊM HAY KHÔNG !", "THÔNG BÁO ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if(DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("XIN MỜI BẠN THÊM CÁC THÔNG TIN CẦN THIẾT", "THÔNG BÁO", MessageBoxButtons.OK);
-            }if(DialogResult == DialogResult.Cancel)
-            {
-                MessageBox.Show("XIN MỜI BẠN CHỌN CHỨC NĂNG KHÁC !","THÔNG BÁO",MessageBoxButtons.OK);
+                if (txtMaHoa.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập mã hoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtMaHoa.Focus();
+                    return false;
+                }
+                if (txtTenHoa.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập tên hoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtTenHoa.Focus();
+                    return false;
+                }
+                if (txtGiaGoc.Text =="")
+                {
+                    MessageBox.Show("Vui lòng nhập giá gốc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtGiaGoc.Focus();
+                    return false;
+                }
+                if (txtGiaBan.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập giá bán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtGiaBan.Focus();
+                    return false;
+                }
+                if (txtSoLuongTon.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập số lượng tồn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtSoLuongTon.Focus();
+                    return false;
+                }
+                if (cbMaLoai.Text == "")
+                {
+                    MessageBox.Show("Vui lòng chọn mã loại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cbMaLoai.Focus();
+                    return false;
+                }
+                return true;
             }
-            MessageBox.Show("BẠN ĐÃ THÊM THÀNH CÔNG !", "THÔNG BÁO", MessageBoxButtons.OK);
-
-            String sqlThem = "INSERT INTO Hoa VALUES (@MaHoa,@TenHoa ,@GiaGoc,@GiaBan,@SoLuongTon,@MaLoai)";
-            SqlCommand command = new SqlCommand(sqlThem, connection);
-            command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
-            command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
-            command.Parameters.AddWithValue("GiaGoc",txtGiaGoc.Text);
-            command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
-            command.Parameters.AddWithValue("SoLuongTon",txtSoLuongTon.Text);
-            command.Parameters.AddWithValue("MaLoai ",cbMaLoai.Text);
-            command.ExecuteNonQuery();
-            HienThi();
-            DialogResult = MessageBox.Show("BẠN ĐÃ THÊM THÀNH CÔNG ", "THÔNG BÁO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnThem_Click_1(object sender, EventArgs e)
         {
-           DialogResult = MessageBox.Show("BẠN CÓ THỰC SỰ MUỐN SỬA HAY KHÔNG", "THÔNG BÁO ", MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-            if (DialogResult == DialogResult.OK)
+            if (ThongTinHangHoa())
             {
-                MessageBox.Show("XIN MỜI BẠN NHẬP THÔNG TIN Ở BÊN DƯỚI", "THÔNG BÁO", MessageBoxButtons.OK);
+                String sqlThem = "INSERT INTO Hoa VALUES (@MaHoa,@TenHoa ,@GiaGoc,@GiaBan,@SoLuongTon,@MaLoai)";
+                SqlCommand command = new SqlCommand(sqlThem, connection);
+                command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
+                command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
+                command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
+                command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
+                command.Parameters.AddWithValue("MaLoai ", cbMaLoai.Text);
+                command.ExecuteNonQuery();
+                HienThi();
+                MessageBox.Show("BẠN ĐÃ THÊM HOA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
             }
-            if (DialogResult == DialogResult.Cancel)
-            {
-                MessageBox.Show("XIN MỜI BẠN CHỌN CHỨC NĂNG KHÁC", "THÔNG BÁO", MessageBoxButtons.OK);
-
-            }
-            MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
-
-            string SqlEdit = "update Hoa set TenHoa = @TenHoa ,GiaGoc = @GiaGoc, " +
-                "GiaBan = @GiaBan,SoLuongTon = @SoLuongTon,@MaLoai = @MaLoai where MaHoa = @MaHoa  ";
-           SqlCommand command = new SqlCommand(SqlEdit,connection);
-            command.Parameters.AddWithValue("MaHoa",txtMaHoa.Text);
-            command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
-            command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
-            command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
-            command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
-            command.Parameters.AddWithValue("MaLoai",cbMaLoai.Text);
-            command.ExecuteNonQuery();
-            HienThi();
-          
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-           DialogResult= MessageBox.Show("BẠN CÓ THỰC SỰ MUỐN XÓA SẢN PHẨM NÀY KHÔNG ?", "THÔNG BÁO ", MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-            if(DialogResult == DialogResult.OK)
-            {
-                MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG SẢN PHẨM !", "THÔNG BÁO", MessageBoxButtons.OK);
-            } if(DialogResult == DialogResult.Cancel)
-            {
-                MessageBox.Show("XIN MỜI BẠN CHỌN CHỨC NĂNG KHÁC", "THÔNG BÁO", MessageBoxButtons.OK);
-            }
-            string SqlXoa = "DELETE FROM Hoa where MaHoa = @MaHoa";
-            SqlCommand command = new SqlCommand(SqlXoa,connection);
-            command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
-            command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
-            command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
-            command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
-            command.Parameters.AddWithValue("SoLuongTon",txtSoLuongTon.Text);
-            command.Parameters.AddWithValue("MaLoai", cbMaLoai.Text);
-            command.ExecuteNonQuery();
-            HienThi();
             
         }
+        private void btnSua_Click_1(object sender, EventArgs e)
+        {
+            if (ThongTinHangHoa())
+            {
+                string SqlEdit = "update Hoa set TenHoa = @TenHoa ,GiaGoc = @GiaGoc, " +
+                "GiaBan = @GiaBan,SoLuongTon = @SoLuongTon,@MaLoai = @MaLoai where MaHoa = @MaHoa  ";
+                SqlCommand command = new SqlCommand(SqlEdit, connection);
+                command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
+                command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
+                command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
+                command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
+                command.Parameters.AddWithValue("MaLoai", cbMaLoai.Text);
+                command.ExecuteNonQuery();
+                HienThi();
+                MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
+            }
+            
+        }
+
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+            if (ThongTinHangHoa())
+            {
+                string SqlXoa = "DELETE FROM Hoa where MaHoa = @MaHoa";
+                SqlCommand command = new SqlCommand(SqlXoa, connection);
+                command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
+                command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
+                command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
+                command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
+                command.Parameters.AddWithValue("MaLoai", cbMaLoai.Text);
+                command.ExecuteNonQuery();
+                HienThi();
+                MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
+            }
+            
+        }
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtGiaGoc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Xác thực rằng phím vừa nhấn không phải CTRL hoặc không phải dạng số
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            // Nếu bạn muốn, bạn có thể cho phép nhập số thực với dấu chấm
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtGiaBan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

@@ -47,7 +47,7 @@ namespace CuaHangHoa
             {
                 if(txtMKmoi.Text == txtNhapLaiMatkhau.Text)
                 {
-                    if (txtMKmoi.Text.Length > 0)
+                    if (txtMKmoi.Text.Length > 5)
                     {
                         string sqlCapNhatMKmoi = "update NhanVien set MatKhau ='" + txtMKmoi.Text + "' where TenTaiKhoan ='"+ txtTenDangNhap.Text + "' and MatKhau ='" + txtMatKhau.Text + "'";
                         SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter(sqlCapNhatMKmoi, connection);

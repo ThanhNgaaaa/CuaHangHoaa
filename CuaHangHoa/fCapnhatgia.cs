@@ -63,7 +63,7 @@ namespace CuaHangHoa
             String sqlTimKiem = "Select MaLoai, MaHoa, TenHoa, GiaGoc, GiaBan from Hoa where  @TenHoa =TenHoa or @MaLoai =MaLoai or @MaHoa = MaHoa ";
             SqlCommand command = new SqlCommand(sqlTimKiem, connection);
             command.Parameters.AddWithValue("MaLoai", cmbMaLoai.Text);
-            command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+            command.Parameters.AddWithValue("MaHoa", txtTenLoai.Text);
             command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
             command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
@@ -80,10 +80,10 @@ namespace CuaHangHoa
                 cmbMaLoai.Focus();
                 return false;
             }
-            if (txtMaHoa.Text == "")
+            if (txtTenLoai.Text == "")
             {
                 MessageBox.Show("Vui lòng chọn Mã Hoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMaHoa.Focus();
+                txtTenLoai.Focus();
                 return false;
             }
             if (txtTenHoa.Text == "")
@@ -113,7 +113,7 @@ namespace CuaHangHoa
             DataGridViewRow row = new DataGridViewRow();
             row = dtgv_CapNhat.Rows[e.RowIndex];
             cmbMaLoai.Text = Convert.ToString(row.Cells["MaLoai"].Value);
-            txtMaHoa.Text = Convert.ToString(row.Cells["MaHoa"].Value);
+            txtTenLoai.Text = Convert.ToString(row.Cells["MaHoa"].Value);
             txtTenHoa.Text = Convert.ToString(row.Cells["TenHoa"].Value);
             txtGiaBan.Text = Convert.ToString(row.Cells["GiaBan"].Value);
         }
@@ -159,7 +159,7 @@ namespace CuaHangHoa
 
                     String sqlCapNhatGia = "Update Hoa set GiaBan=@GiaMoi  where @MaHoa = MaHoa";
                     SqlCommand command = new SqlCommand(sqlCapNhatGia, connection);
-                    command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                    command.Parameters.AddWithValue("MaHoa", txtTenLoai.Text);
                     command.Parameters.AddWithValue("GiaMoi", txtGiaMoi.Text);
                     command.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
