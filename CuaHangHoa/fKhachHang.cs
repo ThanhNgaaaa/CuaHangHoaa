@@ -49,7 +49,7 @@ namespace CuaHangHoa
                 txtTenKh.Focus();
                 return false;
             }
-            if(txtSdt.Text.Length != 10)
+            if(txtSdt.Text.Length < 10)
             {
                 MessageBox.Show("Vui lòng nhập đúng số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSdt.Focus();
@@ -116,7 +116,6 @@ namespace CuaHangHoa
             txtTenKh.Text = Convert.ToString(row.Cells["TenKh"].Value);
             txtSdt.Text = Convert.ToString(row.Cells["SDT"].Value);
         }
-
         private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
