@@ -29,18 +29,31 @@ namespace CuaHangHoa
         {
             InitializeComponent();
         }
-
+        private bool TimKiemHangHoa()
+        {
+            {
+                if (txtMaHoa.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập mã hoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtMaHoa.Focus();
+                    return false;
+                }
+                return true;
+            }
+        }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            String sqlTimKiem = "Select *from Hoa where MaHoa = @MaHoa ";
-            SqlCommand command = new SqlCommand(sqlTimKiem, connection);
-            command.Parameters.AddWithValue("MaHoa",txtMaHoa.Text);
-            command.ExecuteNonQuery();
-            SqlDataReader dr = command.ExecuteReader();
-            DataTable table = new DataTable(sqlTimKiem);
-            table.Load(dr);
-            dgvTimKiem.DataSource = table;
-            
+            if (TimKiemHangHoa())
+            {
+                String sqlTimKiem = "Select *from Hoa where MaHoa = @MaHoa ";
+                SqlCommand command = new SqlCommand(sqlTimKiem, connection);
+                command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                command.ExecuteNonQuery();
+                SqlDataReader dr = command.ExecuteReader();
+                DataTable table = new DataTable(sqlTimKiem);
+                table.Load(dr);
+                dgvTimKiem.DataSource = table;
+            }
         }
         private void Tìm_kiếm_hàng_hóa_Load(object sender, EventArgs e)
         {
@@ -49,5 +62,7 @@ namespace CuaHangHoa
             connection.Open();
             HienThi();
         }
+
+        
     }
 }

@@ -26,6 +26,7 @@ namespace CuaHangHoa
             String conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection= new SqlConnection(conn);
             connection.Open();
+            
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
