@@ -1,6 +1,6 @@
 ﻿namespace CuaHangHoa
 {
-    partial class FlowerManager
+    partial class fFlowerManager
     {
         /// <summary>
         /// Required designer variable.
@@ -106,28 +106,28 @@
             // hàngHóaToolStripMenuItem
             // 
             this.hàngHóaToolStripMenuItem.Name = "hàngHóaToolStripMenuItem";
-            this.hàngHóaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.hàngHóaToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.hàngHóaToolStripMenuItem.Text = "Hàng hóa";
             this.hàngHóaToolStripMenuItem.Click += new System.EventHandler(this.hàngHóaToolStripMenuItem_Click);
             // 
             // tìmKiếmHàngHóaToolStripMenuItem
             // 
             this.tìmKiếmHàngHóaToolStripMenuItem.Name = "tìmKiếmHàngHóaToolStripMenuItem";
-            this.tìmKiếmHàngHóaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tìmKiếmHàngHóaToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.tìmKiếmHàngHóaToolStripMenuItem.Text = "Tìm kiếm hàng hóa";
             this.tìmKiếmHàngHóaToolStripMenuItem.Click += new System.EventHandler(this.tìmKiếmHàngHóaToolStripMenuItem_Click);
             // 
             // cậpNhậtGiáToolStripMenuItem
             // 
             this.cậpNhậtGiáToolStripMenuItem.Name = "cậpNhậtGiáToolStripMenuItem";
-            this.cậpNhậtGiáToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cậpNhậtGiáToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.cậpNhậtGiáToolStripMenuItem.Text = "Cập nhật giá";
             this.cậpNhậtGiáToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtGiáToolStripMenuItem_Click);
             // 
             // KhachHangtoolStripMenuItem2
             // 
             this.KhachHangtoolStripMenuItem2.Name = "KhachHangtoolStripMenuItem2";
-            this.KhachHangtoolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.KhachHangtoolStripMenuItem2.Size = new System.Drawing.Size(219, 26);
             this.KhachHangtoolStripMenuItem2.Text = "Khách Hàng";
             this.KhachHangtoolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -157,7 +157,7 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "CHÀO MỪNG BẠN ĐẾN VỚI CỬA HÀNG HOA";
             // 
-            // FlowerManager
+            // fFlowerManager
             // 
             this.ClientSize = new System.Drawing.Size(1276, 545);
             this.Controls.Add(this.panel3);
@@ -165,7 +165,7 @@
             this.Controls.Add(this.menuStrip3);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip2;
-            this.Name = "FlowerManager";
+            this.Name = "fFlowerManager";
             this.Text = "FlowerManager";
             this.Load += new System.EventHandler(this.FlowerManager_Load);
             this.menuStrip3.ResumeLayout(false);

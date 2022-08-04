@@ -147,7 +147,7 @@
             // 
             this.cbLoai.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLoai.FormattingEnabled = true;
-            this.cbLoai.Location = new System.Drawing.Point(674, 193);
+            this.cbLoai.Location = new System.Drawing.Point(674, 198);
             this.cbLoai.Name = "cbLoai";
             this.cbLoai.Size = new System.Drawing.Size(149, 33);
             this.cbLoai.TabIndex = 10;
@@ -253,7 +253,6 @@
             this.Controls.Add(this.dgvHangHoa);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fHangHoa";
-            this.Text = "Hàng Hóa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fHangHoa_FormClosing);
             this.Load += new System.EventHandler(this.fHangHoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).EndInit();

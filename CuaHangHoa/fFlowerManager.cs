@@ -12,10 +12,10 @@ using System.Configuration;
 namespace CuaHangHoa
 {
    
-    public partial class FlowerManager : Form
+    public partial class fFlowerManager : Form
     {
         SqlConnection connection;
-        public FlowerManager()
+        public fFlowerManager()
         {
             InitializeComponent();
         }
@@ -52,7 +52,7 @@ namespace CuaHangHoa
 
         private void tìmKiếmHàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tìm_kiếm_hàng_hóa d = new Tìm_kiếm_hàng_hóa();
+            fTimkiemhanghoa d = new fTimkiemhanghoa();
             d.ShowDialog();
             
         }
@@ -65,7 +65,7 @@ namespace CuaHangHoa
 
         private void tìmKiếmHàngHóaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Tìm_kiếm_hàng_hóa d = new Tìm_kiếm_hàng_hóa();
+            fTimkiemhanghoa d = new fTimkiemhanghoa();
             d.ShowDialog();
         }
 

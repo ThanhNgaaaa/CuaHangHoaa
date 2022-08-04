@@ -104,11 +104,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(452, 170);
+            this.label4.Location = new System.Drawing.Point(472, 170);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 23);
+            this.label4.Size = new System.Drawing.Size(131, 23);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Loại tài khoảng";
+            this.label4.Text = "Loại tài khoản";
             // 
             // label3
             // 
@@ -175,7 +175,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(119, 10);
+            this.btnSua.Location = new System.Drawing.Point(128, 9);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(83, 41);
@@ -337,6 +337,7 @@
             this.TDT_btShow.TabIndex = 2;
             this.TDT_btShow.Text = "Thống kê";
             this.TDT_btShow.UseVisualStyleBackColor = true;
+            this.TDT_btShow.Click += new System.EventHandler(this.TDT_btShow_Click);
             // 
             // TDT_dtpTo
             // 

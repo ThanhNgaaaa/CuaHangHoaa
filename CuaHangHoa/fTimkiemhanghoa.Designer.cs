@@ -1,6 +1,6 @@
 ﻿namespace CuaHangHoa
 {
-    partial class Tìm_kiếm_hàng_hóa
+    partial class fTimkiemhanghoa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.txtMaHoa = new System.Windows.Forms.TextBox();
             this.dgvTimKiem = new System.Windows.Forms.DataGridView();
             this.gbTimKiem = new System.Windows.Forms.GroupBox();
+            this.txtTentim = new System.Windows.Forms.TextBox();
+            this.ckTimtheoten = new System.Windows.Forms.CheckBox();
+            this.cbLoai = new System.Windows.Forms.ComboBox();
+            this.ckTimtheoloai = new System.Windows.Forms.CheckBox();
+            this.ckTimkiem = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimKiem)).BeginInit();
             this.gbTimKiem.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 25);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Mã hoa : ";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Location = new System.Drawing.Point(240, 150);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(121, 39);
-            this.btnTimKiem.TabIndex = 4;
-            this.btnTimKiem.Text = "Tìm kiếm ";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtMaHoa
-            // 
-            this.txtMaHoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaHoa.Location = new System.Drawing.Point(154, 72);
-            this.txtMaHoa.Name = "txtMaHoa";
-            this.txtMaHoa.Size = new System.Drawing.Size(242, 34);
-            this.txtMaHoa.TabIndex = 2;
             // 
             // dgvTimKiem
             // 
@@ -73,31 +46,83 @@
             this.dgvTimKiem.Name = "dgvTimKiem";
             this.dgvTimKiem.RowHeadersWidth = 51;
             this.dgvTimKiem.RowTemplate.Height = 24;
-            this.dgvTimKiem.Size = new System.Drawing.Size(733, 293);
+            this.dgvTimKiem.Size = new System.Drawing.Size(851, 347);
             this.dgvTimKiem.TabIndex = 1;
-            
             // 
             // gbTimKiem
             // 
-            this.gbTimKiem.Controls.Add(this.label3);
-            this.gbTimKiem.Controls.Add(this.btnTimKiem);
-            this.gbTimKiem.Controls.Add(this.txtMaHoa);
+            this.gbTimKiem.Controls.Add(this.txtTentim);
+            this.gbTimKiem.Controls.Add(this.ckTimtheoten);
+            this.gbTimKiem.Controls.Add(this.cbLoai);
+            this.gbTimKiem.Controls.Add(this.ckTimtheoloai);
+            this.gbTimKiem.Controls.Add(this.ckTimkiem);
             this.gbTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbTimKiem.Location = new System.Drawing.Point(12, 12);
             this.gbTimKiem.Name = "gbTimKiem";
-            this.gbTimKiem.Size = new System.Drawing.Size(713, 240);
+            this.gbTimKiem.Size = new System.Drawing.Size(830, 240);
             this.gbTimKiem.TabIndex = 6;
             this.gbTimKiem.TabStop = false;
             this.gbTimKiem.Text = "Tìm kiếm hàng hóa";
             // 
-            // Tìm_kiếm_hàng_hóa
+            // txtTentim
+            // 
+            this.txtTentim.Location = new System.Drawing.Point(645, 124);
+            this.txtTentim.Name = "txtTentim";
+            this.txtTentim.Size = new System.Drawing.Size(179, 30);
+            this.txtTentim.TabIndex = 4;
+            // 
+            // ckTimtheoten
+            // 
+            this.ckTimtheoten.AutoSize = true;
+            this.ckTimtheoten.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckTimtheoten.Location = new System.Drawing.Point(454, 124);
+            this.ckTimtheoten.Name = "ckTimtheoten";
+            this.ckTimtheoten.Size = new System.Drawing.Size(181, 29);
+            this.ckTimtheoten.TabIndex = 3;
+            this.ckTimtheoten.Text = "Tìm theo tên : ";
+            this.ckTimtheoten.UseVisualStyleBackColor = true;
+            // 
+            // cbLoai
+            // 
+            this.cbLoai.FormattingEnabled = true;
+            this.cbLoai.Location = new System.Drawing.Point(231, 124);
+            this.cbLoai.Name = "cbLoai";
+            this.cbLoai.Size = new System.Drawing.Size(198, 31);
+            this.cbLoai.TabIndex = 2;
+            this.cbLoai.SelectedIndexChanged += new System.EventHandler(this.cbLoai_SelectedIndexChanged);
+            // 
+            // ckTimtheoloai
+            // 
+            this.ckTimtheoloai.AutoSize = true;
+            this.ckTimtheoloai.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckTimtheoloai.Location = new System.Drawing.Point(37, 125);
+            this.ckTimtheoloai.Name = "ckTimtheoloai";
+            this.ckTimtheoloai.Size = new System.Drawing.Size(184, 29);
+            this.ckTimtheoloai.TabIndex = 1;
+            this.ckTimtheoloai.Text = "Tìm theo loại : ";
+            this.ckTimtheoloai.UseVisualStyleBackColor = true;
+            this.ckTimtheoloai.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // ckTimkiem
+            // 
+            this.ckTimkiem.AutoSize = true;
+            this.ckTimkiem.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckTimkiem.Location = new System.Drawing.Point(37, 59);
+            this.ckTimkiem.Name = "ckTimkiem";
+            this.ckTimkiem.Size = new System.Drawing.Size(176, 29);
+            this.ckTimkiem.TabIndex = 0;
+            this.ckTimkiem.Text = "Tìm kiếm hoa ";
+            this.ckTimkiem.UseVisualStyleBackColor = true;
+            this.ckTimkiem.CheckedChanged += new System.EventHandler(this.ckTimkiemhoa_CheckedChanged);
+            // 
+            // fTimkiemhanghoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 556);
+            this.ClientSize = new System.Drawing.Size(854, 617);
             this.Controls.Add(this.gbTimKiem);
             this.Controls.Add(this.dgvTimKiem);
-            this.Name = "Tìm_kiếm_hàng_hóa";
+            this.Name = "fTimkiemhanghoa";
             this.Text = "Tìm_kiếm_hàng_hóa";
             this.Load += new System.EventHandler(this.Tìm_kiếm_hàng_hóa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimKiem)).EndInit();
@@ -108,10 +133,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.TextBox txtMaHoa;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgvTimKiem;
         private System.Windows.Forms.GroupBox gbTimKiem;
+        private System.Windows.Forms.TextBox txtTentim;
+        private System.Windows.Forms.CheckBox ckTimtheoten;
+        private System.Windows.Forms.ComboBox cbLoai;
+        private System.Windows.Forms.CheckBox ckTimtheoloai;
+        private System.Windows.Forms.CheckBox ckTimkiem;
     }
 }

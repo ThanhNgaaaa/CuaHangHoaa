@@ -112,5 +112,10 @@ namespace CuaHangHoa
             table.Load(dr);
             dgvnhanvien.DataSource = table;
         }
+
+        private void TDT_btShow_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

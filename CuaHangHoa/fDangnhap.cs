@@ -20,25 +20,7 @@ namespace CuaHangHoa
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -84,7 +66,7 @@ namespace CuaHangHoa
                     da.Fill(dt);
                     if (dt.Rows.Count >0)
                     {
-                        FlowerManager f = new FlowerManager();
+                        fFlowerManager f = new fFlowerManager();
                         this.Hide();
                         f.ShowDialog();
                         this.Reset();
@@ -104,11 +86,8 @@ namespace CuaHangHoa
             }
         }
 
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
+        
+    
         private void fDangnhap_Load(object sender, EventArgs e)
         {
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();

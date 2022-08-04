@@ -118,27 +118,25 @@ namespace CuaHangHoa
             }
 
         }
-
         private void btnSua_Click_1(object sender, EventArgs e)
         {
             if (ThongTinHangHoa())
             {
                 string SqlEdit = "update Hoa set TenHoa = @TenHoa ,GiaGoc = @GiaGoc, " +
-                "GiaBan = @GiaBan,SoLuongTon = @SoLuongTon,@MaLoai = @MaLoai where MaHoa = @MaHoa  ";
+                "GiaBan = @GiaBan,SoLuongTon = @SoLuongTon, @MaLoai = @MaLoai where MaHoa = @MaHoa  ";
                 SqlCommand command = new SqlCommand(SqlEdit, connection);
                 command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
                 command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
                 command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
                 command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
                 command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
-                command.Parameters.AddWithValue("MaLoai", cbLoai.SelectedValue.ToString().Trim());
+                command.Parameters.AddWithValue("MaLoai",cbLoai.SelectedValue.ToString().Trim());
                 command.ExecuteNonQuery();
                 HienThi();
                 MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
             }
 
         }
-
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
             if (ThongTinHangHoa())
