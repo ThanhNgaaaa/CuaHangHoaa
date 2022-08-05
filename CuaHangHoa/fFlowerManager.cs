@@ -43,7 +43,7 @@ namespace CuaHangHoa
         }
         private void tìmKiếmHàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tìm_kiếm_hàng_hóa d = new Tìm_kiếm_hàng_hóa();
+            fTimkiemhanghoa d = new fTimkiemhanghoa();
             d.ShowDialog();
             
         }
@@ -77,10 +77,10 @@ namespace CuaHangHoa
             fKhachHang.ShowDialog();
         }       
 
-        private void hóaĐơnToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {   
-            fHoaDon d = new fHoaDon();
-            d.ShowDialog();
-        }
+        //private void hóaĐơnToolStripMenuItem_Click_1(object sender, EventArgs e)
+       // {   
+         //   fHoaDon d = new fHoaDon();
+          //  d.ShowDialog();
+       // }
     }
 }

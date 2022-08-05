@@ -70,6 +70,7 @@
             this.txtTentim.Name = "txtTentim";
             this.txtTentim.Size = new System.Drawing.Size(179, 30);
             this.txtTentim.TabIndex = 4;
+            this.txtTentim.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTentim_KeyDown);
             // 
             // ckTimtheoten
             // 
@@ -81,6 +82,7 @@
             this.ckTimtheoten.TabIndex = 3;
             this.ckTimtheoten.Text = "Tìm theo tên : ";
             this.ckTimtheoten.UseVisualStyleBackColor = true;
+            this.ckTimtheoten.CheckedChanged += new System.EventHandler(this.ckTimtheoten_CheckedChanged);
             // 
             // cbLoai
             // 

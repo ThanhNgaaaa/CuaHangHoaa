@@ -26,9 +26,11 @@ namespace CuaHangHoa
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
             connection.Open();
-            loadcombo();
+            //loadcombo();
             HienThi();
             ckTimkiemhoa_CheckedChanged(sender, e);
+            //checkBox2_CheckedChanged(sender, e);
+            //cbLoai_SelectedIndexChanged(sender, e);
         }
         public void HienThi()
         {
@@ -41,7 +43,7 @@ namespace CuaHangHoa
         }
         private void loadcombo()
         {
-            string sqlSelect = "select *from LoaiHoa";
+            string sqlSelect = "select * from LoaiHoa";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -50,18 +52,23 @@ namespace CuaHangHoa
             cbLoai.DisplayMember = table.Columns["TenLoai"].ToString();
             cbLoai.ValueMember = table.Columns["MaLoai"].ToString();
         }
-
+       
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if(ckTimtheoloai.Checked == true)
             {
                 loadcombo();
-            }    
+            }
+            else
+            {
+                cbLoai.DataSource = null;
+                HienThi();
+            }   
         }
 
         private void ckTimkiemhoa_CheckedChanged(object sender, EventArgs e)
         {
-            if(ckTimkiem.Checked == true)
+            if(ckTimkiem.Checked == true) 
             {
                 ckTimtheoloai.Visible = true;
                 ckTimtheoten.Visible = true;
@@ -78,12 +85,41 @@ namespace CuaHangHoa
         }
         private void cbLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and LoaiHoa.TenLoai = '"+cbLoai.Text+"'  ";
+            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and LoaiHoa.TenLoai = N'" + cbLoai.Text + "'  ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(dr);
-            HienThi();
+            dgvTimKiem.DataSource = table;
+        }
+        private void ckTimtheoten_CheckedChanged(object sender, EventArgs e)
+        {
+            
+                if(ckTimtheoten.Checked == true)
+                {
+                    txtTentim.Visible = true;
+                    txtTentim.Text = "";
+                    txtTentim.Focus();
+                }
+            else
+            
+                txtTentim.Visible = false;
+           
+           
+        }
+
+        private void txtTentim_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and TenHoa LIKE N'%" + txtTentim.Text + "%' ";
+                SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(dr);
+                dgvTimKiem.DataSource = table;
+            }
+           
         }
     }
 }

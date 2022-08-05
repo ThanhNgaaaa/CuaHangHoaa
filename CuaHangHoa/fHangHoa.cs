@@ -103,18 +103,24 @@ namespace CuaHangHoa
         {
             if (ThongTinHangHoa())
             {
-                 String sqlThem = "INSERT INTO Hoa VALUES (@MaHoa,@TenHoa ,@GiaGoc,@GiaBan,@SoLuongTon,@MaLoai)";
-               
-                SqlCommand command = new SqlCommand(sqlThem, connection);
-                command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
-                command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
-                command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
-                command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
-                command.Parameters.AddWithValue("SoLuongTon",txtSoLuongTon.Text);
-                command.Parameters.AddWithValue("MaLoai", cbLoai.SelectedValue.ToString());
-                command.ExecuteNonQuery();
-                HienThi();
-                MessageBox.Show("BẠN ĐÃ THÊM HOA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
+                try
+                {
+                    String sqlThem = "INSERT INTO Hoa VALUES (@MaHoa,@TenHoa ,@GiaGoc,@GiaBan,@SoLuongTon,@MaLoai)";
+                    SqlCommand command = new SqlCommand(sqlThem, connection);
+                    command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                    command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
+                    command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
+                    command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
+                    command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
+                    command.Parameters.AddWithValue("MaLoai", cbLoai.SelectedValue.ToString());
+                    command.ExecuteNonQuery();
+                    HienThi();
+                    MessageBox.Show("BẠN ĐÃ THÊM HOA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
+                }
+                catch
+                {
+                    MessageBox.Show("THÊM THẤT BẠI", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }
@@ -122,18 +128,24 @@ namespace CuaHangHoa
         {
             if (ThongTinHangHoa())
             {
-                string SqlEdit = "update Hoa set TenHoa = @TenHoa ,GiaGoc = @GiaGoc, " +
-                "GiaBan = @GiaBan,SoLuongTon = @SoLuongTon, @MaLoai = @MaLoai where MaHoa = @MaHoa  ";
-                SqlCommand command = new SqlCommand(SqlEdit, connection);
-                command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
-                command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
-                command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
-                command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
-                command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
-                command.Parameters.AddWithValue("MaLoai",cbLoai.SelectedValue.ToString().Trim());
-                command.ExecuteNonQuery();
-                HienThi();
-                MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
+                try
+                {
+                    string SqlEdit = "update Hoa set TenHoa = @TenHoa ,GiaGoc = @GiaGoc, GiaBan = @GiaBan,SoLuongTon = @SoLuongTon, MaLoai = @MaLoai Where MaHoa = @MaHoa ";
+                    SqlCommand command = new SqlCommand(SqlEdit, connection);
+                    command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
+                    command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
+                    command.Parameters.AddWithValue("GiaGoc", txtGiaGoc.Text);
+                    command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
+                    command.Parameters.AddWithValue("SoLuongTon", txtSoLuongTon.Text);
+                    command.Parameters.AddWithValue("MaLoai", cbLoai.SelectedValue.ToString());
+                    command.ExecuteNonQuery();
+                    HienThi();
+                    MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
+                }
+                catch
+                {
+                    MessageBox.Show("SỬA THẤT BẠI","THÔNG BÁO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
             }
 
         }
@@ -153,7 +165,6 @@ namespace CuaHangHoa
                 HienThi();
                 MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
             }
-
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
