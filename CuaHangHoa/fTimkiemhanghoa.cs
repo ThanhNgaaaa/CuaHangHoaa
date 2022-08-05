@@ -12,42 +12,114 @@ using System.Configuration;
 
 namespace CuaHangHoa
 {
-    public partial class Tìm_kiếm_hàng_hóa : Form
+    public partial class fTimkiemhanghoa : Form
     {
         SqlConnection connection;
-        
-        void HienThi()
+       
+        public fTimkiemhanghoa()
         {
-            string sqlSelect = "select *from Hoa ";
+            InitializeComponent();
+        }
+        
+        private void Tìm_kiếm_hàng_hóa_Load(object sender, EventArgs e)
+        {
+            string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
+            connection = new SqlConnection(conn);
+            connection.Open();
+            //loadcombo();
+            HienThi();
+            ckTimkiemhoa_CheckedChanged(sender, e);
+            //checkBox2_CheckedChanged(sender, e);
+            //cbLoai_SelectedIndexChanged(sender, e);
+        }
+        public void HienThi()
+        {
+            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
             table.Load(dr);
             dgvTimKiem.DataSource = table;
         }
-        public Tìm_kiếm_hàng_hóa()
+        private void loadcombo()
         {
-            InitializeComponent();
+            string sqlSelect = "select * from LoaiHoa";
+            SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(dr);
+            cbLoai.DataSource = table;
+            cbLoai.DisplayMember = table.Columns["TenLoai"].ToString();
+            cbLoai.ValueMember = table.Columns["MaLoai"].ToString();
+        }
+       
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ckTimtheoloai.Checked == true)
+            {
+                loadcombo();
+            }
+            else
+            {
+                cbLoai.DataSource = null;
+                HienThi();
+            }   
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
+        private void ckTimkiemhoa_CheckedChanged(object sender, EventArgs e)
         {
-            String sqlTimKiem = "Select *from Hoa where MaHoa = @MaHoa ";
-            SqlCommand command = new SqlCommand(sqlTimKiem, connection);
-            command.Parameters.AddWithValue("MaHoa",txtMaHoa.Text);
-            command.ExecuteNonQuery();
-            SqlDataReader dr = command.ExecuteReader();
-            DataTable table = new DataTable(sqlTimKiem);
+            if(ckTimkiem.Checked == true) 
+            {
+                ckTimtheoloai.Visible = true;
+                ckTimtheoten.Visible = true;
+                cbLoai.Visible = true;
+                txtTentim.Visible = true;
+            }
+            else {
+                ckTimtheoloai.Visible = false;
+                ckTimtheoten.Visible = false;
+                cbLoai.Visible = false;
+                txtTentim.Visible = false;
+
+            }
+        }
+        private void cbLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and LoaiHoa.TenLoai = N'" + cbLoai.Text + "'  ";
+            SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable table = new DataTable();
             table.Load(dr);
             dgvTimKiem.DataSource = table;
-            
         }
-        private void Tìm_kiếm_hàng_hóa_Load(object sender, EventArgs e)
+        private void ckTimtheoten_CheckedChanged(object sender, EventArgs e)
         {
-            string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
-            connection = new SqlConnection(conn);
-            connection.Open();
-            HienThi();
+            
+                if(ckTimtheoten.Checked == true)
+                {
+                    txtTentim.Visible = true;
+                    txtTentim.Text = "";
+                    txtTentim.Focus();
+                }
+            else
+            
+                txtTentim.Visible = false;
+           
+           
+        }
+
+        private void txtTentim_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and TenHoa LIKE N'%" + txtTentim.Text + "%' ";
+                SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(dr);
+                dgvTimKiem.DataSource = table;
+            }
+           
         }
     }
 }

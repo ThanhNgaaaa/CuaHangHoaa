@@ -15,43 +15,35 @@ namespace CuaHangHoa
     public partial class FlowerManager : Form
     {
         SqlConnection connection;
+        string loaiTK = fDangnhap.LOAITK_USER;
+        string nv = "1";
         public FlowerManager()
         {
             InitializeComponent();
         }
- 
-
         private void FlowerManager_Load(object sender, EventArgs e)
         {
             String conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection= new SqlConnection(conn);
             connection.Open();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-           
+            if ( loaiTK.Equals(nv))
+            {
+                adminToolStripMenuItem.Enabled = false;
+            }
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void hàngHóaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fHangHoa d = new fHangHoa();
             d.ShowDialog  ();
         }
-
         private void tìmKiếmHàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tìm_kiếm_hàng_hóa d = new Tìm_kiếm_hàng_hóa();
+            fTimkiemhanghoa d = new fTimkiemhanghoa();
             d.ShowDialog();
             
         }
@@ -61,25 +53,6 @@ namespace CuaHangHoa
             Cập_nhật_giá d = new Cập_nhật_giá();
             d.ShowDialog();
         }
-
-        private void tìmKiếmHàngHóaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Tìm_kiếm_hàng_hóa d = new Tìm_kiếm_hàng_hóa();
-            d.ShowDialog();
-        }
-
-        private void cậpNhậtGiáToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Cập_nhật_giá d = new Cập_nhật_giá();
-            d.ShowDialog();
-        }
-
-        private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Thống_kê d = new Thống_kê();
-            d.ShowDialog();
-        }
-
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin d = new fAdmin();
@@ -93,21 +66,6 @@ namespace CuaHangHoa
             d.ShowDialog();
         }
 
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -117,13 +75,12 @@ namespace CuaHangHoa
         {
             fKhachHang fKhachHang = new fKhachHang ();
             fKhachHang.ShowDialog();
-        }
-        private void changeAccount(int type)
-        {
-            fDangnhap d = new fDangnhap();
-            type = d.loaiTK();
-            adminToolStripMenuItem.Enabled = type == 0;
+        }       
 
-        }
+        //private void hóaĐơnToolStripMenuItem_Click_1(object sender, EventArgs e)
+       // {   
+         //   fHoaDon d = new fHoaDon();
+          //  d.ShowDialog();
+       // }
     }
 }

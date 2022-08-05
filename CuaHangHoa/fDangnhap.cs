@@ -15,34 +15,10 @@ namespace CuaHangHoa
     public partial class fDangnhap : Form
     {
         SqlConnection connection;
+        public static string LOAITK_USER ;
         public fDangnhap()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
         private bool KiemTraThongTin()
         {
@@ -58,43 +34,66 @@ namespace CuaHangHoa
                 txtPassWord.Focus();
                 return false;
             }
-            if (cmbLoaiTK.Text == "")
-            {
-                MessageBox.Show("Vui lòng chọn loại tài khoản đừng để trống nhé !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cmbLoaiTK.Focus();
-                return false;
-            }
+
             return true;
         }
         private void Reset()
         {
             txttenTk.Text = "";
             txtPassWord.Text = "";
-            cmbLoaiTK.Text = "";
+        }
+        private string getLoaiTK(string username, string pass)
+        {
+            string id = "" ;
+            try
+            {
+                if (KiemTraThongTin()) { 
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE TenTaiKhoan ='" + username + "' and MatKhau='" + pass + "'", connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if (dt != null)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            id = dr["LoaiTaiKhoan"].ToString();
+                        }                
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return id;
+        }
+        private void fDangnhap_Load(object sender, EventArgs e)
+        {
+            string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
+            connection = new SqlConnection(conn);
+            connection.Open();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-                string userName = txttenTk.Text;
-                string passWord = txtPassWord.Text;
-                if (KiemTraThongTin())
-                {
-                    string sqlLogin = " select * from NhanVien where TenTaiKhoan = '" + userName + "' and MatKhau = '" + passWord + "' and LoaiTaiKhoan ='" + loaiTK() +"'";
-                    SqlDataAdapter da = new SqlDataAdapter(sqlLogin,connection);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    if (dt.Rows.Count >0)
-                    {
-                        FlowerManager f = new FlowerManager();
-                        this.Hide();
-                        f.ShowDialog();
-                        this.Reset();
-                        this.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sai tên tài khoản hoặc mật khẩu hoặc loại tài khoản!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+            LOAITK_USER = getLoaiTK(txttenTk.Text, txtPassWord.Text);
+            if (LOAITK_USER != "")
+            {
+                FlowerManager f = new FlowerManager();
+                this.Hide();
+                MessageBox.Show("ĐĂNG NHẬP THÀNH CÔNG!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                f.ShowDialog();
+                this.Reset();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản và mật khẩu không đúng !!");
+            }
         }
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -103,33 +102,10 @@ namespace CuaHangHoa
                 e.Cancel = true;
             }
         }
-
-        private void label2_Click_1(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
 
-        private void fDangnhap_Load(object sender, EventArgs e)
-        {
-            string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
-            connection = new SqlConnection(conn);
-            connection.Open();
-        }
-
-        private void cmbLoaiTK_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        public int loaiTK()
-        {
-            if(cmbLoaiTK.SelectedIndex == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
     }
 }
