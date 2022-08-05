@@ -55,6 +55,7 @@ namespace CuaHangHoa
             DataTable table = new DataTable();
             table.Load(dr);
             dgvnhanvien.DataSource = table;
+            //abc
         }
 
         private void btnSua_Click(object sender, EventArgs e)
