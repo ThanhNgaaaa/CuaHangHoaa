@@ -75,12 +75,17 @@ namespace CuaHangHoa
         {
             fKhachHang fKhachHang = new fKhachHang ();
             fKhachHang.ShowDialog();
-        }       
+        }
 
-        //private void hóaĐơnToolStripMenuItem_Click_1(object sender, EventArgs e)
-       // {   
-         //   fHoaDon d = new fHoaDon();
-          //  d.ShowDialog();
-       // }
+        private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fThanhToan d = new fThanhToan();
+            d.ShowDialog();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

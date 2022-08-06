@@ -16,6 +16,7 @@ namespace CuaHangHoa
     {
         SqlConnection connection;
         public static string LOAITK_USER ;
+        public static string MA_USER ;
         public fDangnhap()
         {
             InitializeComponent();
@@ -72,6 +73,37 @@ namespace CuaHangHoa
             }
             return id;
         }
+        private string getMaNV(string username, string pass)
+        {
+            string MaNV = "";
+            try
+            {
+                if (KiemTraThongTin())
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE TenTaiKhoan ='" + username + "' and MatKhau='" + pass + "'", connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if (dt != null)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            MaNV = dr["MaNv"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return MaNV;
+        }
         private void fDangnhap_Load(object sender, EventArgs e)
         {
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
@@ -81,11 +113,12 @@ namespace CuaHangHoa
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LOAITK_USER = getLoaiTK(txttenTk.Text, txtPassWord.Text);
+            MA_USER = getMaNV(txttenTk.Text, txtPassWord.Text);
+
             if (LOAITK_USER != "")
             {
                 FlowerManager f = new FlowerManager();
                 this.Hide();
-                MessageBox.Show("ĐĂNG NHẬP THÀNH CÔNG!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 f.ShowDialog();
                 this.Reset();
                 this.Show();
