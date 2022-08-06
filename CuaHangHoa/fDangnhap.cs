@@ -17,6 +17,8 @@ namespace CuaHangHoa
         SqlConnection connection;
         public static string LOAITK_USER ;
         public static string MA_USER ;
+        public static string TenTaiKhoan;
+        public static string UsertName = "";
         public fDangnhap()
         {
             InitializeComponent();
@@ -104,6 +106,37 @@ namespace CuaHangHoa
             }
             return MaNV;
         }
+        private string getTenNV(string username, string pass)
+        {
+            string TenNV = "";
+            try
+            {
+                if (KiemTraThongTin())
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE TenTaiKhoan ='" + username + "' and MatKhau='" + pass + "'", connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if (dt != null)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            TenNV = dr["TenNv"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return TenNV;
+        }
         private void fDangnhap_Load(object sender, EventArgs e)
         {
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
@@ -117,11 +150,14 @@ namespace CuaHangHoa
 
             if (LOAITK_USER != "")
             {
+                Variables.TenNV = getTenNV(txttenTk.Text, txtPassWord.Text);
+
                 FlowerManager f = new FlowerManager();
                 this.Hide();
                 f.ShowDialog();
                 this.Reset();
                 this.Show();
+
             }
             else
             {

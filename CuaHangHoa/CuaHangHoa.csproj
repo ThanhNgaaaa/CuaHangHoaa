@@ -114,6 +114,7 @@
     <Compile Include="fTimkiemhanghoa.Designer.cs">
       <DependentUpon>fTimkiemhanghoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Variables.cs" />
     <EmbeddedResource Include="fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </EmbeddedResource>

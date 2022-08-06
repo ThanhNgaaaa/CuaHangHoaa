@@ -116,7 +116,23 @@ namespace CuaHangHoa
 
         private void TDT_btShow_Click(object sender, EventArgs e)
         {
-
+            string sql = @"
+SELECT	NhanVien.MaNv,
+		NhanVien.TenNv,
+		SUM(ChiTietHoaDon.DonGia * ChiTietHoaDon.SoLuong) AS TongTien
+FROM HoaDon INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
+			INNER JOIN NhanVien ON HoaDon.MaNv = NhanVien.MaNv
+WHERE DATEDIFF(DAY, HoaDon.NgayLap, @TuNgay) <= 0 AND DATEDIFF(DAY, HoaDon.NgayLap, @DenNgay) >= 0
+GROUP BY NhanVien.MaNv, NhanVien.TenNv";
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("TuNgay", TDT_dtpFrom.Value);
+            command.Parameters.AddWithValue("DenNgay", TDT_dtpTo.Value);
+            command.ExecuteNonQuery();
+            SqlDataReader dr = command.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(dr);
+            TDT_dgvStatistics.AutoGenerateColumns = false;
+            TDT_dgvStatistics.DataSource = table;
         }
     }
 }

@@ -57,6 +57,9 @@
             this.TDT_dtpTo = new System.Windows.Forms.DateTimePicker();
             this.TDT_dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MaNv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvnhanvien)).BeginInit();
             this.tbNhanVien.SuspendLayout();
@@ -307,13 +310,20 @@
             // 
             // TDT_dgvStatistics
             // 
+            this.TDT_dgvStatistics.AllowUserToAddRows = false;
+            this.TDT_dgvStatistics.AllowUserToDeleteRows = false;
             this.TDT_dgvStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TDT_dgvStatistics.Location = new System.Drawing.Point(11, 69);
+            this.TDT_dgvStatistics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaNv,
+            this.TenNv,
+            this.TongTien});
+            this.TDT_dgvStatistics.Location = new System.Drawing.Point(7, 74);
             this.TDT_dgvStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TDT_dgvStatistics.Name = "TDT_dgvStatistics";
             this.TDT_dgvStatistics.RowHeadersWidth = 51;
             this.TDT_dgvStatistics.RowTemplate.Height = 24;
-            this.TDT_dgvStatistics.Size = new System.Drawing.Size(835, 374);
+            this.TDT_dgvStatistics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TDT_dgvStatistics.Size = new System.Drawing.Size(832, 346);
             this.TDT_dgvStatistics.TabIndex = 1;
             // 
             // panel1
@@ -330,7 +340,7 @@
             // TDT_btShow
             // 
             this.TDT_btShow.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TDT_btShow.Location = new System.Drawing.Point(333, 15);
+            this.TDT_btShow.Location = new System.Drawing.Point(611, 15);
             this.TDT_btShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TDT_btShow.Name = "TDT_btShow";
             this.TDT_btShow.Size = new System.Drawing.Size(155, 37);
@@ -342,7 +352,7 @@
             // TDT_dtpTo
             // 
             this.TDT_dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TDT_dtpTo.Location = new System.Drawing.Point(519, 15);
+            this.TDT_dtpTo.Location = new System.Drawing.Point(309, 17);
             this.TDT_dtpTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TDT_dtpTo.Name = "TDT_dtpTo";
             this.TDT_dtpTo.Size = new System.Drawing.Size(296, 30);
@@ -351,7 +361,7 @@
             // TDT_dtpFrom
             // 
             this.TDT_dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TDT_dtpFrom.Location = new System.Drawing.Point(0, 15);
+            this.TDT_dtpFrom.Location = new System.Drawing.Point(4, 17);
             this.TDT_dtpFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TDT_dtpFrom.Name = "TDT_dtpFrom";
             this.TDT_dtpFrom.Size = new System.Drawing.Size(299, 30);
@@ -362,6 +372,30 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // MaNv
+            // 
+            this.MaNv.DataPropertyName = "MaNv";
+            this.MaNv.HeaderText = "Mã NV";
+            this.MaNv.MinimumWidth = 6;
+            this.MaNv.Name = "MaNv";
+            this.MaNv.Width = 125;
+            // 
+            // TenNv
+            // 
+            this.TenNv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenNv.DataPropertyName = "TenNv";
+            this.TenNv.HeaderText = "Tên nhân viên";
+            this.TenNv.MinimumWidth = 6;
+            this.TenNv.Name = "TenNv";
+            // 
+            // TongTien
+            // 
+            this.TongTien.DataPropertyName = "TongTien";
+            this.TongTien.HeaderText = "Tổng tiền";
+            this.TongTien.MinimumWidth = 6;
+            this.TongTien.Name = "TongTien";
+            this.TongTien.Width = 150;
             // 
             // fAdmin
             // 
@@ -410,11 +444,14 @@
         private System.Windows.Forms.TabPage tbNhanVien;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbDoanhThu;
-        private System.Windows.Forms.DataGridView TDT_dgvStatistics;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button TDT_btShow;
         private System.Windows.Forms.DateTimePicker TDT_dtpTo;
         private System.Windows.Forms.DateTimePicker TDT_dtpFrom;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DataGridView TDT_dgvStatistics;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;
     }
 }

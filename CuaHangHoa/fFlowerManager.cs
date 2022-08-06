@@ -17,12 +17,18 @@ namespace CuaHangHoa
         SqlConnection connection;
         string loaiTK = fDangnhap.LOAITK_USER;
         string nv = "1";
+      
+       
         public FlowerManager()
         {
             InitializeComponent();
+            
+            
         }
+        
         private void FlowerManager_Load(object sender, EventArgs e)
         {
+            label1.Text = "Xin chào người dùng : " + Variables.TenNV;
             String conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection= new SqlConnection(conn);
             connection.Open();
