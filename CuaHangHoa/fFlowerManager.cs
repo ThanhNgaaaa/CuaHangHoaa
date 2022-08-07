@@ -432,5 +432,11 @@ namespace CuaHangHoa
                 LoadDataGridView();
             }
         }
+
+        private void doanhthuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fDoanhThu d = new fDoanhThu();
+            d.ShowDialog();
+        }
     }
 }

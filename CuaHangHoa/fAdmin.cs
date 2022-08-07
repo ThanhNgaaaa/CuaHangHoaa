@@ -114,27 +114,6 @@ namespace CuaHangHoa
             dgvnhanvien.DataSource = table;
         }
 
-        private void TDT_btShow_Click(object sender, EventArgs e)
-        {
-            string sql = @"
-SELECT	NhanVien.MaNv,
-		NhanVien.TenNv,
-		ISNULL(SUM(ChiTietHoaDon.DonGia * ChiTietHoaDon.SoLuong), 0) AS TongTien
-FROM NhanVien INNER JOIN HoaDon ON NhanVien.MaNv = HoaDon.MaNv
-			  INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
-WHERE DATEDIFF(DAY, HoaDon.NgayLap, @TuNgay) <= 0 AND DATEDIFF(DAY, HoaDon.NgayLap, @DenNgay) >= 0
-GROUP BY NhanVien.MaNv, NhanVien.TenNv";
-            SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("TuNgay", TDT_dtpFrom.Value);
-            command.Parameters.AddWithValue("DenNgay", TDT_dtpTo.Value);
-            command.ExecuteNonQuery();
-            SqlDataReader dr = command.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(dr);
-            TDT_dgvStatistics.AutoGenerateColumns = false;
-            TDT_dgvStatistics.DataSource = table;
-        }
-
         private void txttimkiemten_TextChanged(object sender, EventArgs e)
         {
 

@@ -64,6 +64,12 @@
     <Compile Include="fCapnhatgia.Designer.cs">
       <DependentUpon>fCapnhatgia.cs</DependentUpon>
     </Compile>
+    <Compile Include="fDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fDoanhThu.Designer.cs">
+      <DependentUpon>fDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="fFlowerManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fCapnhatgia.resx">
       <DependentUpon>fCapnhatgia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fDoanhThu.resx">
+      <DependentUpon>fDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fFlowerManager.resx">
       <DependentUpon>fFlowerManager.cs</DependentUpon>
