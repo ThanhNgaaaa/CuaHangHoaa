@@ -48,6 +48,7 @@ namespace CuaHangHoa
             if (loaiTK.Equals(nv))
             {
                 adminToolStripMenuItem.Enabled = false;
+                doanhthuToolStripMenuItem.Enabled = false;
             }
 
 
