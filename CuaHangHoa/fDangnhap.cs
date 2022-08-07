@@ -176,5 +176,22 @@ namespace CuaHangHoa
             Application.Exit();
         }
 
+        private void picAnMK_Click(object sender, EventArgs e)
+        {
+            if (txtPassWord.PasswordChar == '*')
+            {
+                picHienMK.BringToFront();
+                txtPassWord.PasswordChar = '\0';
+            }
+        }
+
+        private void picHienMK_Click(object sender, EventArgs e)
+        {
+            if (txtPassWord.PasswordChar == '\0')
+            {
+                picAnMK.BringToFront();
+                txtPassWord.PasswordChar = '*';
+            }
+        }
     }
 }
