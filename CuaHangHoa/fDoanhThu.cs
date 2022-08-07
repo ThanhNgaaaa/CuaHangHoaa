@@ -31,14 +31,7 @@ namespace CuaHangHoa
 
         private void TDT_btShow_Click(object sender, EventArgs e)
         {
-//            string sql = @"
-//SELECT	NhanVien.MaNv,
-//		NhanVien.TenNv,
-//		ISNULL(SUM(ChiTietHoaDon.DonGia * ChiTietHoaDon.SoLuong), 0) AS TongTien
-//FROM NhanVien INNER JOIN HoaDon ON NhanVien.MaNv = HoaDon.MaNv
-//			  INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
-//WHERE DATEDIFF(DAY, HoaDon.NgayLap, @TuNgay) <= 0 AND DATEDIFF(DAY, HoaDon.NgayLap, @DenNgay) >= 0
-//GROUP BY NhanVien.MaNv, NhanVien.TenNv";
+
             string sql = @"
 SELECT	NhanVien.MaNv,
 		NhanVien.TenNv,
