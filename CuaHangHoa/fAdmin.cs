@@ -119,9 +119,9 @@ namespace CuaHangHoa
             string sql = @"
 SELECT	NhanVien.MaNv,
 		NhanVien.TenNv,
-		SUM(ChiTietHoaDon.DonGia * ChiTietHoaDon.SoLuong) AS TongTien
-FROM HoaDon INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
-			INNER JOIN NhanVien ON HoaDon.MaNv = NhanVien.MaNv
+		ISNULL(SUM(ChiTietHoaDon.DonGia * ChiTietHoaDon.SoLuong), 0) AS TongTien
+FROM NhanVien INNER JOIN HoaDon ON NhanVien.MaNv = HoaDon.MaNv
+			  INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
 WHERE DATEDIFF(DAY, HoaDon.NgayLap, @TuNgay) <= 0 AND DATEDIFF(DAY, HoaDon.NgayLap, @DenNgay) >= 0
 GROUP BY NhanVien.MaNv, NhanVien.TenNv";
             SqlCommand command = new SqlCommand(sql, connection);
