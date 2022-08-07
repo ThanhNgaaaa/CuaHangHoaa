@@ -134,5 +134,10 @@ GROUP BY NhanVien.MaNv, NhanVien.TenNv";
             TDT_dgvStatistics.AutoGenerateColumns = false;
             TDT_dgvStatistics.DataSource = table;
         }
+
+        private void txttimkiemten_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

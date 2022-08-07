@@ -168,8 +168,12 @@ namespace CuaHangHoa
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Bạn có muốn thoát không ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
-            this.Close();
+           DialogResult = MessageBox.Show("Bạn có muốn thoát không ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if(DialogResult == DialogResult.OK)
+            {
+                this.Close();
+            }  else
+                Focus();
 
         }
         private void txtGiaBan_KeyPress(object sender, KeyPressEventArgs e)
@@ -209,6 +213,18 @@ namespace CuaHangHoa
             txtSoLuongTon.Text = Convert.ToString(row.Cells["SoLuongTon"].Value);
             cbLoai.Text = Convert.ToString(row.Cells["TenLoai"].Value);
 
+        }
+
+        private void txtSoLuongTon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
