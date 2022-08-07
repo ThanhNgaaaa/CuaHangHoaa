@@ -178,6 +178,7 @@
             this.txtSoLuongTon.Name = "txtSoLuongTon";
             this.txtSoLuongTon.Size = new System.Drawing.Size(168, 34);
             this.txtSoLuongTon.TabIndex = 7;
+            this.txtSoLuongTon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuongTon_KeyPress);
             // 
             // label4
             // 
