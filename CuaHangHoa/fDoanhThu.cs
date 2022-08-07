@@ -32,6 +32,8 @@ namespace CuaHangHoa
         private void TDT_btShow_Click(object sender, EventArgs e)
         {
 
+
+
             string sql = @"
 SELECT	NhanVien.MaNv,
 		NhanVien.TenNv,

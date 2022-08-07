@@ -108,12 +108,6 @@
     <Compile Include="fThongtintaikhoan.Designer.cs">
       <DependentUpon>fThongtintaikhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="fThongke.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fThongke.Designer.cs">
-      <DependentUpon>fThongke.cs</DependentUpon>
-    </Compile>
     <Compile Include="fTimkiemhanghoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,9 +151,6 @@
     </Compile>
     <EmbeddedResource Include="fThongtintaikhoan.resx">
       <DependentUpon>fThongtintaikhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fThongke.resx">
-      <DependentUpon>fThongke.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTimkiemhanghoa.resx">
       <DependentUpon>fTimkiemhanghoa.cs</DependentUpon>
