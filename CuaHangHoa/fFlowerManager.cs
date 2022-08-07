@@ -220,21 +220,23 @@ namespace CuaHangHoa
         private void LoadDataGridView()
         {
             string sql;
-            sql = "select L.TenLoai, H.MaHoa as [Mã hoa], H.TenHoa, C.SoLuong as[Số lượng], H.GiaBan, C.SoLuong*H.GiaBan as [Tổng tiền] from ChiTietHoaDon C, Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai and  C.MaHoa = H.MaHoa and C.MaHoaDon = '" + txtMaHD.Text + "'";
+            sql = "select C.MaHoaDon, L.TenLoai, H.MaHoa as [Mã hoa], H.TenHoa, C.SoLuong as[Số lượng], H.GiaBan, C.SoLuong*H.GiaBan as [Tổng tiền] from ChiTietHoaDon C, Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai and  C.MaHoa = H.MaHoa and C.MaHoaDon = '" + txtMaHD.Text + "'";
             tblCTHD = GetDataToTable(sql);
             dtgv_HoaDon.DataSource = tblCTHD;
-            dtgv_HoaDon.Columns[0].HeaderText = "Loại hoa";
-            dtgv_HoaDon.Columns[1].HeaderText = "Mã hoa";
-            dtgv_HoaDon.Columns[2].HeaderText = "Tên hoa";
-            dtgv_HoaDon.Columns[3].HeaderText = "Số lượng";
-            dtgv_HoaDon.Columns[4].HeaderText = "Đơn giá";
-            dtgv_HoaDon.Columns[5].HeaderText = "Tổng tiền";
+            dtgv_HoaDon.Columns[0].HeaderText = "Mã hóa đơn";
+            dtgv_HoaDon.Columns[1].HeaderText = "Loại hoa";
+            dtgv_HoaDon.Columns[2].HeaderText = "Mã hoa";
+            dtgv_HoaDon.Columns[3].HeaderText = "Tên hoa";
+            dtgv_HoaDon.Columns[4].HeaderText = "Số lượng";
+            dtgv_HoaDon.Columns[5].HeaderText = "Giá bán";
+            dtgv_HoaDon.Columns[6].HeaderText = "Tổng tiền";
             dtgv_HoaDon.Columns[0].Width = 120;
-            dtgv_HoaDon.Columns[1].Width = 80;
-            dtgv_HoaDon.Columns[2].Width = 180;
-            dtgv_HoaDon.Columns[3].Width = 90;
+            dtgv_HoaDon.Columns[1].Width = 120;
+            dtgv_HoaDon.Columns[2].Width = 80;
+            dtgv_HoaDon.Columns[3].Width = 180;
             dtgv_HoaDon.Columns[4].Width = 90;
             dtgv_HoaDon.Columns[5].Width = 90;
+            dtgv_HoaDon.Columns[6].Width = 90;
             dtgv_HoaDon.AllowUserToAddRows = false;
             dtgv_HoaDon.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
