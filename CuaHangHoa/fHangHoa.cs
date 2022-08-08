@@ -226,5 +226,10 @@ namespace CuaHangHoa
                 e.Handled = true;
             }
         }
+
+        private void txtMaHoa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

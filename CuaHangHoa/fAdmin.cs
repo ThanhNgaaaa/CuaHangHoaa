@@ -90,17 +90,7 @@ namespace CuaHangHoa
             MessageBox.Show("BẠN ĐÃ xoá THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
         }
 
-        private void dgvnhanvien_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i;
-            i = dgvnhanvien.CurrentRow.Index;
-            txtManv.Text = dgvnhanvien.Rows[i].Cells[0].Value.ToString();
-            txttennv.Text = dgvnhanvien.Rows[i].Cells[1].Value.ToString();
-            txtsdt.Text = dgvnhanvien.Rows[i].Cells[2].Value.ToString();
-            txttentk.Text = dgvnhanvien.Rows[i].Cells[3].Value.ToString();
-            txtmk.Text = dgvnhanvien.Rows[i].Cells[4].Value.ToString();
-            cbbloai.Text = dgvnhanvien.Rows[i].Cells[5].Value.ToString();
-        }
+        
 
         private void btntim_Click(object sender, EventArgs e)
         {
@@ -114,9 +104,44 @@ namespace CuaHangHoa
             dgvnhanvien.DataSource = table;
         }
 
-        private void txttimkiemten_TextChanged(object sender, EventArgs e)
-        {
+        
 
+        private void txtsdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txttimkiemten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string sqlSelect = "select * from NhanVien where TenNv LIKE N'%" + txttimkiemten.Text + "%' ";
+                SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(dr);
+                dgvnhanvien.DataSource = table;
+            }
+        }
+
+        private void dgvnhanvien_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int i;
+            txtManv.ReadOnly = true;
+            i = dgvnhanvien.CurrentRow.Index;
+            txtManv.Text = dgvnhanvien.Rows[i].Cells[0].Value.ToString();
+            txttennv.Text = dgvnhanvien.Rows[i].Cells[1].Value.ToString();
+            txtsdt.Text = dgvnhanvien.Rows[i].Cells[2].Value.ToString();
+            txttentk.Text = dgvnhanvien.Rows[i].Cells[3].Value.ToString();
+            txtmk.Text = dgvnhanvien.Rows[i].Cells[4].Value.ToString();
+            cbbloai.Text = dgvnhanvien.Rows[i].Cells[5].Value.ToString();
         }
     }
 }

@@ -60,7 +60,14 @@ namespace CuaHangHoa
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult = MessageBox.Show("BẠN CÓ MUỐN THOÁT KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (DialogResult == DialogResult.OK)
+            {
+                this.Close();
+            }
+            else
+                Focus();
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -80,17 +87,25 @@ namespace CuaHangHoa
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (KiemTraThongTin())
-            {
-                string sqlSua = "Update KhachHang set MaKh = @MaKh, TenKh= @TenKh, SDT = @SDT where MaKh = @MaKh";
-                SqlCommand command = new SqlCommand(sqlSua, connection);
-                command.Parameters.AddWithValue("MaKh", txtMaKh.Text);
-                command.Parameters.AddWithValue("TenKh", txtTenKh.Text);
-                command.Parameters.AddWithValue("SDT", txtSdt.Text);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Sửa thông tin khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                HienThi();
+            try {
+                if (KiemTraThongTin())
+                {
+                    string sqlSua = "Update KhachHang set MaKh = @MaKh, TenKh= @TenKh, SDT = @SDT where MaKh = @MaKh";
+                    SqlCommand command = new SqlCommand(sqlSua, connection);
+                    command.Parameters.AddWithValue("MaKh", txtMaKh.Text);
+                    command.Parameters.AddWithValue("TenKh", txtTenKh.Text);
+                    command.Parameters.AddWithValue("SDT", txtSdt.Text.Trim());
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Sửa thông tin khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HienThi();
+                }
             }
+            catch
+            {
+                MessageBox.Show("SỬA THẤT BẠI", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -108,14 +123,7 @@ namespace CuaHangHoa
             }
         }
 
-        private void dtgv_KhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = new DataGridViewRow();
-            row = dtgv_KhachHang.Rows[e.RowIndex];
-            txtMaKh.Text = Convert.ToString(row.Cells["MaKh"].Value);
-            txtTenKh.Text = Convert.ToString(row.Cells["TenKh"].Value);
-            txtSdt.Text = Convert.ToString(row.Cells["SDT"].Value);
-        }
+        
         private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -128,6 +136,19 @@ namespace CuaHangHoa
             }
         }
 
-       
+        private void txtMaKh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgv_KhachHang_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            txtMaKh.ReadOnly = true;
+            DataGridViewRow row = new DataGridViewRow();
+            row = dtgv_KhachHang.Rows[e.RowIndex];
+            txtMaKh.Text = Convert.ToString(row.Cells["MaKh"].Value);
+            txtTenKh.Text = Convert.ToString(row.Cells["TenKh"].Value);
+            txtSdt.Text = Convert.ToString(row.Cells["SDT"].Value);
+        }
     }
 }

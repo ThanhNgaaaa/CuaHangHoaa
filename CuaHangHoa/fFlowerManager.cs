@@ -34,7 +34,7 @@ namespace CuaHangHoa
         
         private void FlowerManager_Load(object sender, EventArgs e)
         {
-            label1.Text = "Xin chào người dùng : " + Variables.TenNV;
+            label1.Text = "XIN CHÀO : " + Variables.TenNV;
 
            
 

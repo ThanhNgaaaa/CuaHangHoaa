@@ -234,6 +234,7 @@
             this.txtMaHoa.Name = "txtMaHoa";
             this.txtMaHoa.Size = new System.Drawing.Size(168, 34);
             this.txtMaHoa.TabIndex = 1;
+            this.txtMaHoa.TextChanged += new System.EventHandler(this.txtMaHoa_TextChanged);
             // 
             // label1
             // 
