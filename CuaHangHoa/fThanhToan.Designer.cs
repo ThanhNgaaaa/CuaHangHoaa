@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fThanhToan));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpNgayLap = new System.Windows.Forms.DateTimePicker();
@@ -52,10 +53,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_HoaDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -226,11 +229,14 @@
             // btnThemHD
             // 
             this.btnThemHD.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThemHD.Image = ((System.Drawing.Image)(resources.GetObject("btnThemHD.Image")));
+            this.btnThemHD.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnThemHD.Location = new System.Drawing.Point(18, 565);
             this.btnThemHD.Name = "btnThemHD";
-            this.btnThemHD.Size = new System.Drawing.Size(202, 55);
+            this.btnThemHD.Size = new System.Drawing.Size(214, 55);
             this.btnThemHD.TabIndex = 10;
             this.btnThemHD.Text = "Thêm hóa đơn";
+            this.btnThemHD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemHD.UseVisualStyleBackColor = true;
             this.btnThemHD.Click += new System.EventHandler(this.btnThemHD_Click_1);
             // 
@@ -295,11 +301,23 @@
             this.label.TabIndex = 14;
             this.label.Text = "Nháy đúp dòng để xóa hoa";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1236, 418);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(211, 227);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // fThanhToan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1490, 648);
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.ClientSize = new System.Drawing.Size(1450, 648);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.label6);
@@ -319,6 +337,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmSoLuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_HoaDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,5 +369,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

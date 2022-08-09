@@ -182,12 +182,12 @@ namespace CuaHangHoa
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LOAITK_USER = getLoaiTK(txttenTk.Text, txtPassWord.Text);
-            MA_USER = getMaNV(txttenTk.Text, txtPassWord.Text);
-            SDT_USER = getSDT(txttenTk.Text, txtPassWord.Text);
 
             if (LOAITK_USER != "")
             {
                 Variables.TenNV = getTenNV(txttenTk.Text, txtPassWord.Text);
+                MA_USER = getMaNV(txttenTk.Text, txtPassWord.Text);
+                SDT_USER = getSDT(txttenTk.Text, txtPassWord.Text);
 
                 FlowerManager f = new FlowerManager();
                 this.Hide();
