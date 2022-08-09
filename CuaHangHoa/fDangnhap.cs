@@ -18,7 +18,8 @@ namespace CuaHangHoa
         public static string LOAITK_USER ;
         public static string MA_USER ;
         public static string TenTaiKhoan;
-        public static string UsertName = "";
+        public static string SDT_USER;
+        public static string UserName = "";
         public fDangnhap()
         {
             InitializeComponent();
@@ -106,6 +107,39 @@ namespace CuaHangHoa
             }
             return MaNV;
         }
+        private string getSDT(string username, string pass)
+        {
+            string SDT = "";
+            try
+            {
+                if (KiemTraThongTin())
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE TenTaiKhoan ='" + username + "' and MatKhau='" + pass + "'", connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if (dt != null)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            SDT = dr["SDT"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return SDT;
+        }
+
+
         private string getTenNV(string username, string pass)
         {
             string TenNV = "";
@@ -137,16 +171,19 @@ namespace CuaHangHoa
             }
             return TenNV;
         }
+        
         private void fDangnhap_Load(object sender, EventArgs e)
         {
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
             connection.Open();
         }
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LOAITK_USER = getLoaiTK(txttenTk.Text, txtPassWord.Text);
             MA_USER = getMaNV(txttenTk.Text, txtPassWord.Text);
+            SDT_USER = getSDT(txttenTk.Text, txtPassWord.Text);
 
             if (LOAITK_USER != "")
             {

@@ -150,5 +150,10 @@ namespace CuaHangHoa
             txtTenKh.Text = Convert.ToString(row.Cells["TenKh"].Value);
             txtSdt.Text = Convert.ToString(row.Cells["SDT"].Value);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

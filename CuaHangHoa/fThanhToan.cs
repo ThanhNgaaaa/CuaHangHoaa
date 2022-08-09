@@ -86,21 +86,23 @@ namespace CuaHangHoa
         private void LoadDataGridView()
         {
             string sql;
-            sql = "select L.TenLoai, H.MaHoa, H.TenHoa, C.SoLuong, H.GiaBan, C.SoLuong*H.GiaBan as [Tổng tiền] from ChiTietHoaDon C, Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai and  C.MaHoa = H.MaHoa and C.MaHoaDon = '" + txtMaHD.Text + "'";
+            sql = "select C.MaHoaDon, L.TenLoai, H.MaHoa as [Mã hoa], H.TenHoa, C.SoLuong as[Số lượng], H.GiaBan, C.SoLuong*H.GiaBan as [Tổng tiền] from ChiTietHoaDon C, Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai and  C.MaHoa = H.MaHoa and C.MaHoaDon = '" + txtMaHD.Text + "'";
             tblCTHD = GetDataToTable(sql);
             dtgv_HoaDon.DataSource = tblCTHD;
-            dtgv_HoaDon.Columns[0].HeaderText = "Loại hoa";
-            dtgv_HoaDon.Columns[1].HeaderText = "Mã hoa";
-            dtgv_HoaDon.Columns[2].HeaderText = "Tên hoa";
-            dtgv_HoaDon.Columns[3].HeaderText = "Số lượng";
-            dtgv_HoaDon.Columns[4].HeaderText = "Đơn giá";
-            dtgv_HoaDon.Columns[5].HeaderText = "Tổng tiền";
-            dtgv_HoaDon.Columns[0].Width = 80;
-            dtgv_HoaDon.Columns[1].Width = 80;
-            dtgv_HoaDon.Columns[2].Width = 130;
-            dtgv_HoaDon.Columns[3].Width = 90;
+            dtgv_HoaDon.Columns[0].HeaderText = "Mã hóa đơn";
+            dtgv_HoaDon.Columns[1].HeaderText = "Loại hoa";
+            dtgv_HoaDon.Columns[2].HeaderText = "Mã hoa";
+            dtgv_HoaDon.Columns[3].HeaderText = "Tên hoa";
+            dtgv_HoaDon.Columns[4].HeaderText = "Số lượng";
+            dtgv_HoaDon.Columns[5].HeaderText = "Giá bán";
+            dtgv_HoaDon.Columns[6].HeaderText = "Tổng tiền";
+            dtgv_HoaDon.Columns[0].Width = 120;
+            dtgv_HoaDon.Columns[1].Width = 120;
+            dtgv_HoaDon.Columns[2].Width = 80;
+            dtgv_HoaDon.Columns[3].Width = 180;
             dtgv_HoaDon.Columns[4].Width = 90;
             dtgv_HoaDon.Columns[5].Width = 90;
+            dtgv_HoaDon.Columns[6].Width = 90;
             dtgv_HoaDon.AllowUserToAddRows = false;
             dtgv_HoaDon.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
@@ -198,6 +200,18 @@ namespace CuaHangHoa
             LoadDataGridView();
 
         }
+        private void capNhatTongTien()
+        {
+            int sc = dtgv_HoaDon.Rows.Count;
+            string sqlUpdatePrice;
+            for (int i = 0; i < sc; i++)
+            {
+                string maHoa = dtgv_HoaDon.Rows[i].Cells["Mã hoa"].Value.ToString();
+                float donGia = float.Parse(dtgv_HoaDon.Rows[i].Cells["Tổng tiền"].Value.ToString());
+                sqlUpdatePrice = "Update ChiTietHoaDon SET DonGia ='" + donGia + "' WHERE MaHoaDon ='" + txtMaHD.Text + "' and MaHoa='" + maHoa + "'";
+                RunSQL(sqlUpdatePrice);
+            }
+        }
         private void btnThem_Click_1(object sender, EventArgs e)
         {
 
@@ -212,6 +226,7 @@ namespace CuaHangHoa
                 command.ExecuteNonQuery();
                 MessageBox.Show("Thêm hoa thành công!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadDataGridView();
+                capNhatTongTien();
 
             }
             thanhTien();
@@ -293,5 +308,35 @@ namespace CuaHangHoa
             this.Close();
         }
 
+        private void dtgv_HoaDon_DoubleClick(object sender, EventArgs e)
+        {
+            string MaHoaxoa, sql;
+            Double ThanhTienxoa, SoLuongxoa, sl, slcon, tong, tongmoi;
+            if (tblCTHD.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if ((MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+            {
+                //Xóa hàng và cập nhật lại số lượng hàng 
+                MaHoaxoa = dtgv_HoaDon.CurrentRow.Cells["Mã hoa"].Value.ToString();
+                SoLuongxoa = Convert.ToDouble(dtgv_HoaDon.CurrentRow.Cells["Số lượng"].Value.ToString());
+                ThanhTienxoa = Convert.ToDouble(dtgv_HoaDon.CurrentRow.Cells["Tổng tiền"].Value.ToString());
+                sql = "DELETE ChiTietHoaDon WHERE MaHoaDon='" + txtMaHD.Text + "' AND MaHoa = N'" + MaHoaxoa + "'";
+                RunSQL(sql);
+                // Cập nhật lại số lượng cho các mặt hàng
+                sl = Convert.ToDouble(GetFieldValues("SELECT SoLuongTon FROM Hoa WHERE MaHoa = '" + MaHoaxoa + "'"));
+                slcon = sl + SoLuongxoa;
+                sql = "UPDATE Hoa SET SoLuongTon =" + slcon + " WHERE MaHoa= '" + MaHoaxoa + "'";
+                RunSQL(sql);
+                // Cập nhật lại tổng tiền cho hóa đơn bán
+                tong = Double.Parse(txtTongTien.Text);
+                tongmoi = tong - ThanhTienxoa;
+                RunSQL(sql);
+                txtTongTien.Text = tongmoi.ToString();
+                LoadDataGridView();
+            }
+        }
     }
 }
