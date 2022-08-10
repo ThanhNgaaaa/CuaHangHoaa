@@ -49,7 +49,7 @@ namespace CuaHangHoa
             }
             catch
             {
-                MessageBox.Show("THÊM BỊ LỖI","THÔNG BÁO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("NHẬP THÔNG TIN ĐỂ THÊM","THÔNG BÁO",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             btnSua.Enabled = false;
             btnxoa.Enabled = false;
@@ -96,7 +96,7 @@ namespace CuaHangHoa
             }
             catch
             {
-
+                //LÕi CHƯA CHẠy ĐƯỢc 
             }
             btnThoat.Enabled = false;
             btnthemm.Enabled = false;
