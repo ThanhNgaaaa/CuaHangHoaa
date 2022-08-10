@@ -139,7 +139,37 @@ namespace CuaHangHoa
             return SDT;
         }
 
+        private string getTenTaiKhoan(string username, string pass)
+        {
+            string TenTK = "";
+            try
+            {
+                if (KiemTraThongTin())
+                {
 
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE TenTaiKhoan ='" + username + "' and MatKhau='" + pass + "'", connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if (dt != null)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            TenTK = dr["TenTaiKhoan"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return TenTK;
+        }
         private string getTenNV(string username, string pass)
         {
             string TenNV = "";
@@ -188,7 +218,7 @@ namespace CuaHangHoa
                 Variables.TenNV = getTenNV(txttenTk.Text, txtPassWord.Text);
                 MA_USER = getMaNV(txttenTk.Text, txtPassWord.Text);
                 SDT_USER = getSDT(txttenTk.Text, txtPassWord.Text);
-
+                TenTaiKhoan = getTenTaiKhoan(txttenTk.Text, txtPassWord.Text);
                 FlowerManager f = new FlowerManager();
                 this.Hide();
                 f.ShowDialog();

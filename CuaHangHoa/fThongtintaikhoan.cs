@@ -34,6 +34,9 @@ namespace CuaHangHoa
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
             connection.Open();
+
+            txtTenDangNhap.Text = fDangnhap.TenTaiKhoan;
+            txtTenDangNhap.ReadOnly = true;
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)

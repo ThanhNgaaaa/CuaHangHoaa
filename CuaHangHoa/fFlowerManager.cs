@@ -34,7 +34,7 @@ namespace CuaHangHoa
         
         private void FlowerManager_Load(object sender, EventArgs e)
         {
-            label1.Text = "XIN CHÀO : " + Variables.TenNV;
+            label1.Text = "Xin chào : " + Variables.TenNV;
 
             String conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
@@ -449,6 +449,11 @@ namespace CuaHangHoa
         {
             fThanhToan d = new fThanhToan();
             d.ShowDialog();
+        }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
