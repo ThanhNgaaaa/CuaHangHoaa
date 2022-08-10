@@ -192,8 +192,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Image\" />
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\them.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Double-J-Design-Origami-Save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Graphicloads-100-Flat-Close.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\dong.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Etherbrian-Webuosities-Fix-it.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Hopstarter-Button-Button-Delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Button-Delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Button-Delete-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Aha-Soft-Large-Business-Zoom.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Custom-Icon-Design-Pretty-Office-9-Edit-validated.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Awicons-Vista-Artistic-Add.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -77,7 +77,7 @@
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Location = new System.Drawing.Point(0, 38);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1375, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1406, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -92,7 +92,7 @@
             this.doanhthuToolStripMenuItem});
             this.menuStrip3.Location = new System.Drawing.Point(0, 0);
             this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(1375, 38);
+            this.menuStrip3.Size = new System.Drawing.Size(1406, 38);
             this.menuStrip3.TabIndex = 1;
             this.menuStrip3.Text = "menuStrip3";
             // 
@@ -210,8 +210,8 @@
             this.labelControl1.Appearance.Options.UseBackColor = true;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(321, 81);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl1.Location = new System.Drawing.Point(285, 71);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(812, 46);
             this.labelControl1.TabIndex = 4;
@@ -232,31 +232,31 @@
             this.gcThongTinAccount.Controls.Add(this.labelControl3);
             this.gcThongTinAccount.Controls.Add(this.txtMa);
             this.gcThongTinAccount.Controls.Add(this.labelControl2);
-            this.gcThongTinAccount.Location = new System.Drawing.Point(15, 193);
-            this.gcThongTinAccount.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gcThongTinAccount.Location = new System.Drawing.Point(0, 211);
+            this.gcThongTinAccount.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.gcThongTinAccount.Name = "gcThongTinAccount";
-            this.gcThongTinAccount.Size = new System.Drawing.Size(569, 424);
+            this.gcThongTinAccount.Size = new System.Drawing.Size(570, 416);
             this.gcThongTinAccount.TabIndex = 5;
             this.gcThongTinAccount.Text = "Thông Tin Nhân Viên";
             // 
             // txtChucVu
             // 
-            this.txtChucVu.Location = new System.Drawing.Point(223, 322);
-            this.txtChucVu.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtChucVu.Location = new System.Drawing.Point(220, 323);
+            this.txtChucVu.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.txtChucVu.Name = "txtChucVu";
             this.txtChucVu.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtChucVu.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtChucVu.Properties.Appearance.Options.UseBackColor = true;
             this.txtChucVu.Properties.Appearance.Options.UseFont = true;
-            this.txtChucVu.Size = new System.Drawing.Size(328, 40);
+            this.txtChucVu.Size = new System.Drawing.Size(309, 40);
             this.txtChucVu.TabIndex = 7;
             // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(8, 325);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl5.Location = new System.Drawing.Point(22, 330);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(115, 33);
             this.labelControl5.TabIndex = 6;
@@ -264,22 +264,22 @@
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(223, 239);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtSDT.Location = new System.Drawing.Point(220, 243);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtSDT.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtSDT.Properties.Appearance.Options.UseBackColor = true;
             this.txtSDT.Properties.Appearance.Options.UseFont = true;
-            this.txtSDT.Size = new System.Drawing.Size(328, 40);
+            this.txtSDT.Size = new System.Drawing.Size(309, 40);
             this.txtSDT.TabIndex = 5;
             // 
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(8, 246);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl4.Location = new System.Drawing.Point(26, 246);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(176, 33);
             this.labelControl4.TabIndex = 4;
@@ -287,22 +287,22 @@
             // 
             // txtTen
             // 
-            this.txtTen.Location = new System.Drawing.Point(223, 161);
-            this.txtTen.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTen.Location = new System.Drawing.Point(220, 162);
+            this.txtTen.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.txtTen.Name = "txtTen";
             this.txtTen.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtTen.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtTen.Properties.Appearance.Options.UseBackColor = true;
             this.txtTen.Properties.Appearance.Options.UseFont = true;
-            this.txtTen.Size = new System.Drawing.Size(324, 40);
+            this.txtTen.Size = new System.Drawing.Size(309, 40);
             this.txtTen.TabIndex = 3;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(8, 168);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl3.Location = new System.Drawing.Point(26, 165);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(134, 33);
             this.labelControl3.TabIndex = 2;
@@ -310,22 +310,22 @@
             // 
             // txtMa
             // 
-            this.txtMa.Location = new System.Drawing.Point(223, 81);
-            this.txtMa.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtMa.Location = new System.Drawing.Point(220, 78);
+            this.txtMa.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.txtMa.Name = "txtMa";
             this.txtMa.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtMa.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtMa.Properties.Appearance.Options.UseBackColor = true;
             this.txtMa.Properties.Appearance.Options.UseFont = true;
-            this.txtMa.Size = new System.Drawing.Size(324, 40);
+            this.txtMa.Size = new System.Drawing.Size(309, 40);
             this.txtMa.TabIndex = 1;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(8, 84);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl2.Location = new System.Drawing.Point(22, 81);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(180, 33);
             this.labelControl2.TabIndex = 0;
@@ -336,13 +336,13 @@
             this.pictureEdit1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureEdit1.BackgroundImage")));
             this.pictureEdit1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(1989, 72);
-            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureEdit1.Location = new System.Drawing.Point(1004, 50);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.ZoomPercent = 50D;
-            this.pictureEdit1.Size = new System.Drawing.Size(336, 297);
+            this.pictureEdit1.Size = new System.Drawing.Size(220, 149);
             this.pictureEdit1.TabIndex = 6;
             // 
             // panel3
@@ -352,7 +352,7 @@
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(788, 193);
+            this.panel3.Location = new System.Drawing.Point(721, 211);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(407, 293);
             this.panel3.TabIndex = 7;
@@ -410,7 +410,7 @@
             // FlowerManager
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1375, 711);
+            this.ClientSize = new System.Drawing.Size(1406, 711);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.gcThongTinAccount);
             this.Controls.Add(this.pictureEdit1);
