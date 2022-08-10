@@ -195,5 +195,10 @@ namespace CuaHangHoa
             } else
                 Focus();
         }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAdmin));
             this.cbbloai = new System.Windows.Forms.ComboBox();
             this.txtmk = new System.Windows.Forms.TextBox();
             this.txttentk = new System.Windows.Forms.TextBox();
@@ -51,8 +52,10 @@
             this.txtManv = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvnhanvien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbbloai
@@ -162,6 +165,7 @@
             // 
             // btnThoat
             // 
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Location = new System.Drawing.Point(459, 10);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -169,11 +173,12 @@
             this.btnThoat.Size = new System.Drawing.Size(92, 41);
             this.btnThoat.TabIndex = 12;
             this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnHuy
             // 
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.Location = new System.Drawing.Point(332, 8);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -181,11 +186,12 @@
             this.btnHuy.Size = new System.Drawing.Size(83, 41);
             this.btnHuy.TabIndex = 11;
             this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnthemm
             // 
+            this.btnthemm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnthemm.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnthemm.Location = new System.Drawing.Point(3, 10);
             this.btnthemm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -193,11 +199,12 @@
             this.btnthemm.Size = new System.Drawing.Size(89, 41);
             this.btnthemm.TabIndex = 7;
             this.btnthemm.Text = "Thêm";
-            this.btnthemm.UseVisualStyleBackColor = true;
+            this.btnthemm.UseVisualStyleBackColor = false;
             this.btnthemm.Click += new System.EventHandler(this.btnthemm_Click);
             // 
             // btnSua
             // 
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.Location = new System.Drawing.Point(110, 10);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -205,11 +212,12 @@
             this.btnSua.Size = new System.Drawing.Size(83, 41);
             this.btnSua.TabIndex = 6;
             this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnxoa
             // 
+            this.btnxoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnxoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnxoa.Location = new System.Drawing.Point(215, 10);
             this.btnxoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -217,7 +225,7 @@
             this.btnxoa.Size = new System.Drawing.Size(83, 41);
             this.btnxoa.TabIndex = 5;
             this.btnxoa.Text = "Xóa";
-            this.btnxoa.UseVisualStyleBackColor = true;
+            this.btnxoa.UseVisualStyleBackColor = false;
             this.btnxoa.Click += new System.EventHandler(this.btnxoa_Click);
             // 
             // txttimkiemten
@@ -232,6 +240,7 @@
             // 
             // btntim
             // 
+            this.btntim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btntim.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntim.Location = new System.Drawing.Point(587, 9);
             this.btntim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -239,7 +248,7 @@
             this.btntim.Size = new System.Drawing.Size(85, 42);
             this.btntim.TabIndex = 8;
             this.btntim.Text = "Tìm";
-            this.btntim.UseVisualStyleBackColor = true;
+            this.btntim.UseVisualStyleBackColor = false;
             this.btntim.Click += new System.EventHandler(this.btntim_Click);
             // 
             // txttennv
@@ -288,11 +297,24 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(464, 31);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(171, 132);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(1178, 551);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbbloai);
             this.Controls.Add(this.txtmk);
             this.Controls.Add(this.txttentk);
@@ -314,6 +336,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvnhanvien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,5 +366,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
