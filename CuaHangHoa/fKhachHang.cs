@@ -21,7 +21,7 @@ namespace CuaHangHoa
         }
         void HienThi()
         {
-            string sqlSelect = "select * from KhachHang ";
+            string sqlSelect = "select MaKh as[Mã Khách Hàng], TenKh as[Tên Khách Hàng], SDT as[Số điện thoại] from KhachHang ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -168,9 +168,9 @@ namespace CuaHangHoa
             txtMaKh.ReadOnly = true;
             DataGridViewRow row = new DataGridViewRow();
             row = dtgv_KhachHang.Rows[e.RowIndex];
-            txtMaKh.Text = Convert.ToString(row.Cells["MaKh"].Value);
-            txtTenKh.Text = Convert.ToString(row.Cells["TenKh"].Value);
-            txtSdt.Text = Convert.ToString(row.Cells["SDT"].Value);
+            txtMaKh.Text = Convert.ToString(row.Cells["Mã Khách Hàng"].Value);
+            txtTenKh.Text = Convert.ToString(row.Cells["Tên Khách Hàng"].Value);
+            txtSdt.Text = Convert.ToString(row.Cells["Số điện thoại"].Value);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

@@ -17,7 +17,7 @@ namespace CuaHangHoa
         SqlConnection connection;
         void HienThi()
         {
-            string sqlSelect = "select MaLoai, MaHoa, TenHoa, GiaGoc, GiaBan from Hoa ";
+            string sqlSelect = "select MaLoai as[Mã Loại], MaHoa as[Mã Hoa], TenHoa as[Tên Hoa], GiaGoc as[Giá Gốc], GiaBan as[Giá Bán] from Hoa ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -29,22 +29,6 @@ namespace CuaHangHoa
             InitializeComponent();
         }
         
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        //private void btn_Click(object sender, EventArgs e)
-        //{
-        //    String sqlTimKiem = "Select * from Hoa where MaHoa = @MaHoa ";
-        //    SqlCommand command = new SqlCommand(sqlTimKiem, connection);
-        //    command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
-        //    command.ExecuteNonQuery();
-        //    SqlDataReader dr = command.ExecuteReader();
-        //    DataTable table = new DataTable(sqlTimKiem);
-        //    table.Load(dr);
-        //    dtgv_CapNhat.DataSource = table;
-
-        //}
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
@@ -112,10 +96,10 @@ namespace CuaHangHoa
         {
             DataGridViewRow row = new DataGridViewRow();
             row = dtgv_CapNhat.Rows[e.RowIndex];
-            cmbMaLoai.Text = Convert.ToString(row.Cells["MaLoai"].Value);
-            txtTenLoai.Text = Convert.ToString(row.Cells["MaHoa"].Value);
-            txtTenHoa.Text = Convert.ToString(row.Cells["TenHoa"].Value);
-            txtGiaBan.Text = Convert.ToString(row.Cells["GiaBan"].Value);
+            cmbMaLoai.Text = Convert.ToString(row.Cells["Mã Loại"].Value);
+            txtTenLoai.Text = Convert.ToString(row.Cells["Mã Hoa"].Value);
+            txtTenHoa.Text = Convert.ToString(row.Cells["Tên Hoa"].Value);
+            txtGiaBan.Text = Convert.ToString(row.Cells["Giá Bán"].Value);
         }
 
         private void txtGiaMoi_KeyPress(object sender, KeyPressEventArgs e)

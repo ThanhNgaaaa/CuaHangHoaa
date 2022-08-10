@@ -222,7 +222,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Thông_tin_tài_khoản";
-            this.Text = "Thông tin tài khoản";
+            this.Text = "Cập nhật mật khẩu";
             this.Load += new System.EventHandler(this.Thông_tin_tài_khoản_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

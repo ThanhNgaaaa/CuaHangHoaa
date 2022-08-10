@@ -227,5 +227,8 @@
   <ItemGroup>
     <None Include="Image\Awicons-Vista-Artistic-Add.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\background_Flower.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

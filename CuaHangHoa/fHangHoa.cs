@@ -34,7 +34,7 @@ namespace CuaHangHoa
         }
         public void HienThi()
         {
-            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai ";
+            string sqlSelect = "select MaHoa as[Mã Hoa],TenHoa as[Tên Hoa],GiaGoc as[Giá Gốc],GiaBan as [Giá Bán],SoLuongTon as[Số Lượng Tồn],TenLoai as[Tên Loại] from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -224,12 +224,12 @@ namespace CuaHangHoa
             txtMaHoa.ReadOnly = true;
             DataGridViewRow row = new DataGridViewRow();
             row = dgvHangHoa.Rows[e.RowIndex];
-            txtMaHoa.Text = Convert.ToString(row.Cells["MaHoa"].Value);
-            txtTenHoa.Text = Convert.ToString(row.Cells["TenHoa"].Value);
-            txtGiaGoc.Text = Convert.ToString(row.Cells["GiaGoc"].Value);
-            txtGiaBan.Text = Convert.ToString(row.Cells["GiaGoc"].Value);
-            txtSoLuongTon.Text = Convert.ToString(row.Cells["SoLuongTon"].Value);
-            cbLoai.Text = Convert.ToString(row.Cells["TenLoai"].Value);
+            txtMaHoa.Text = Convert.ToString(row.Cells["Mã Hoa"].Value);
+            txtTenHoa.Text = Convert.ToString(row.Cells["Tên Hoa"].Value);
+            txtGiaGoc.Text = Convert.ToString(row.Cells["Giá Bán"].Value);
+            txtGiaBan.Text = Convert.ToString(row.Cells["Giá Gốc"].Value);
+            txtSoLuongTon.Text = Convert.ToString(row.Cells["Số Lượng Tồn"].Value);
+            cbLoai.Text = Convert.ToString(row.Cells["Tên Loại"].Value);
 
         }
 
