@@ -122,6 +122,16 @@ namespace CuaHangHoa
                     MessageBox.Show("THÊM THẤT BẠI", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = false;
+            txtMaHoa.ReadOnly = false;
+            txtMaHoa.Text = "";
+            txtTenHoa.Text = "";
+            txtGiaGoc.Text = "";
+            txtGiaBan.Text = "";
+            txtSoLuongTon.Text = "";
 
         }
         private void btnSua_Click_1(object sender, EventArgs e)
@@ -146,6 +156,10 @@ namespace CuaHangHoa
                 {
                     MessageBox.Show("SỬA THẤT BẠI","THÔNG BÁO",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
+                btnThoat.Enabled = false;
+                btnThem.Enabled = false;    
+                btnXoa.Enabled = false;
+                btnHuy.Enabled = true;
             }
 
         }
@@ -165,6 +179,10 @@ namespace CuaHangHoa
                 HienThi();
                 MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
             }
+            btnThem.Enabled=false;
+            btnSua.Enabled=false;
+            btnHuy.Enabled=true;
+            btnThoat.Enabled = false;
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
@@ -227,9 +245,12 @@ namespace CuaHangHoa
             }
         }
 
-        private void txtMaHoa_TextChanged(object sender, EventArgs e)
+        private void btnHuy_Click(object sender, EventArgs e)
         {
-
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            btnThoat.Enabled = true;
         }
     }
 }

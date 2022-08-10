@@ -33,17 +33,36 @@ namespace CuaHangHoa
 
         private void btnthemm_Click(object sender, EventArgs e)
         {
-            String sqlThem = "INSERT INTO NhanVien VALUES (@MaNv,@TenNV ,@SDT,@TenTaiKhoan,@MatKhau,@LoaiTaiKhoan)";
-            SqlCommand command = new SqlCommand(sqlThem, connection);
-            command.Parameters.AddWithValue("MaNv", txtManv.Text);
-            command.Parameters.AddWithValue("TenNV", txttennv.Text);
-            command.Parameters.AddWithValue("SDT", txtsdt.Text);
-            command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
-            command.Parameters.AddWithValue("MatKhau", txtmk.Text);
-            command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
-            command.ExecuteNonQuery();
-            HienThi();
-            DialogResult = MessageBox.Show("BẠN ĐÃ THÊM THÀNH CÔNG ", "THÔNG BÁO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                String sqlThem = "INSERT INTO NhanVien VALUES (@MaNv,@TenNV ,@SDT,@TenTaiKhoan,@MatKhau,@LoaiTaiKhoan)";
+                SqlCommand command = new SqlCommand(sqlThem, connection);
+                command.Parameters.AddWithValue("MaNv", txtManv.Text);
+                command.Parameters.AddWithValue("TenNV", txttennv.Text);
+                command.Parameters.AddWithValue("SDT", txtsdt.Text);
+                command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
+                command.Parameters.AddWithValue("MatKhau", txtmk.Text);
+                command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
+                command.ExecuteNonQuery();
+                HienThi();
+                DialogResult = MessageBox.Show("BẠN ĐÃ THÊM THÀNH CÔNG ", "THÔNG BÁO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("THÊM BỊ LỖI","THÔNG BÁO",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            btnSua.Enabled = false;
+            btnxoa.Enabled = false;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = false;
+            txtManv.ReadOnly = false;
+            btntim.Enabled = false;
+            txtManv.Text = "";
+            txttennv.Text = "";
+            txtsdt.Text = "";
+            txttentk.Text = "";
+            txtmk.Text = "";
+            
         }
 
         private void HienThi()
@@ -60,19 +79,30 @@ namespace CuaHangHoa
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-
-            string SqlEdit = "update NhanVien set LoaiTaiKhoan = @LoaiTaiKhoan ,TenNV = @TenNV, " +
+            try
+            {
+                string SqlEdit = "update NhanVien set LoaiTaiKhoan = @LoaiTaiKhoan ,TenNV = @TenNV, " +
                 "SDT = @SDT,TenTaiKhoan = @TenTaiKhoan,@MatKhau = @MatKhau where MaNv = @MaNv  ";
-            SqlCommand command = new SqlCommand(SqlEdit, connection);
-            command.Parameters.AddWithValue("MaNv", txtManv.Text);
-            command.Parameters.AddWithValue("TenNV", txttennv.Text);
-            command.Parameters.AddWithValue("SDT", txtsdt.Text);
-            command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
-            command.Parameters.AddWithValue("MatKhau", txtmk.Text);
-            command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
-            command.ExecuteNonQuery();
-            HienThi();
-            MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
+                SqlCommand command = new SqlCommand(SqlEdit, connection);
+                command.Parameters.AddWithValue("MaNv", txtManv.Text);
+                command.Parameters.AddWithValue("TenNV", txttennv.Text);
+                command.Parameters.AddWithValue("SDT", txtsdt.Text);
+                command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
+                command.Parameters.AddWithValue("MatKhau", txtmk.Text);
+                command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
+                command.ExecuteNonQuery();
+                HienThi();
+                MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
+            }
+            catch
+            {
+
+            }
+            btnThoat.Enabled = false;
+            btnthemm.Enabled = false;
+            btnxoa.Enabled = false;
+            btnHuy.Enabled = true;
+            
         }
 
         private void btnxoa_Click(object sender, EventArgs e)
@@ -88,9 +118,11 @@ namespace CuaHangHoa
             command.ExecuteNonQuery();
             HienThi();
             MessageBox.Show("BẠN ĐÃ xoá THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
+            btnthemm.Enabled = false;
+            btnSua.Enabled = false;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = false;
         }
-
-        
 
         private void btntim_Click(object sender, EventArgs e)
         {
@@ -142,6 +174,26 @@ namespace CuaHangHoa
             txttentk.Text = dgvnhanvien.Rows[i].Cells[3].Value.ToString();
             txtmk.Text = dgvnhanvien.Rows[i].Cells[4].Value.ToString();
             cbbloai.Text = dgvnhanvien.Rows[i].Cells[5].Value.ToString();
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+
+            btnthemm.Enabled = true;
+            btnSua.Enabled = true;
+            btnxoa.Enabled = true;
+            btnThoat.Enabled = true;
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult = MessageBox.Show("BẠN CÓ MUỐN THOÁT HAY KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+            {
+                this.Close();
+
+            } else
+                Focus();
         }
     }
 }

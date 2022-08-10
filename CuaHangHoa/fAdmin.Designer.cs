@@ -39,8 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.btnthemm = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnxoa = new System.Windows.Forms.Button();
@@ -147,8 +147,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.btnThoat);
+            this.panel4.Controls.Add(this.btnHuy);
             this.panel4.Controls.Add(this.btnthemm);
             this.panel4.Controls.Add(this.btnSua);
             this.panel4.Controls.Add(this.btnxoa);
@@ -160,27 +160,29 @@
             this.panel4.Size = new System.Drawing.Size(1314, 59);
             this.panel4.TabIndex = 0;
             // 
-            // button3
+            // btnThoat
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(459, 10);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 41);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Thoát";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.Location = new System.Drawing.Point(459, 10);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(92, 41);
+            this.btnThoat.TabIndex = 12;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // button2
+            // btnHuy
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(328, 10);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 41);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Hủy";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Location = new System.Drawing.Point(332, 8);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(83, 41);
+            this.btnHuy.TabIndex = 11;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnthemm
             // 
@@ -221,7 +223,7 @@
             // txttimkiemten
             // 
             this.txttimkiemten.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttimkiemten.Location = new System.Drawing.Point(728, 15);
+            this.txttimkiemten.Location = new System.Drawing.Point(714, 15);
             this.txttimkiemten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txttimkiemten.Name = "txttimkiemten";
             this.txttimkiemten.Size = new System.Drawing.Size(392, 34);
@@ -231,7 +233,7 @@
             // btntim
             // 
             this.btntim.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntim.Location = new System.Drawing.Point(604, 10);
+            this.btntim.Location = new System.Drawing.Point(587, 9);
             this.btntim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btntim.Name = "btntim";
             this.btntim.Size = new System.Drawing.Size(85, 42);
@@ -305,7 +307,7 @@
             this.Controls.Add(this.dgvnhanvien);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txttennv);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fAdmin";
             this.Text = "Quản lý nhân viên";
             this.Load += new System.EventHandler(this.fAdmin_Load);
@@ -339,7 +341,7 @@
         private System.Windows.Forms.TextBox txtManv;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

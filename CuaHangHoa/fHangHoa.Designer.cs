@@ -30,7 +30,7 @@
         {
             this.dgvHangHoa = new System.Windows.Forms.DataGridView();
             this.grb1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@
             // 
             // grb1
             // 
-            this.grb1.Controls.Add(this.button2);
+            this.grb1.Controls.Add(this.btnHuy);
             this.grb1.Controls.Add(this.btnThoat);
             this.grb1.Controls.Add(this.btnXoa);
             this.grb1.Controls.Add(this.btnSua);
@@ -91,20 +91,21 @@
             this.grb1.TabStop = false;
             this.grb1.Text = "Thông tin hàng hóa ";
             // 
-            // button2
+            // btnHuy
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(447, 258);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 45);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Hủy";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Location = new System.Drawing.Point(657, 258);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(100, 45);
+            this.btnHuy.TabIndex = 17;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(600, 258);
+            this.btnThoat.Location = new System.Drawing.Point(866, 258);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(105, 45);
             this.btnThoat.TabIndex = 15;
@@ -115,7 +116,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(162, 258);
+            this.btnXoa.Location = new System.Drawing.Point(239, 258);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(100, 45);
             this.btnXoa.TabIndex = 14;
@@ -126,7 +127,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(291, 258);
+            this.btnSua.Location = new System.Drawing.Point(446, 258);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(96, 45);
             this.btnSua.TabIndex = 13;
@@ -149,7 +150,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(531, 201);
+            this.label6.Location = new System.Drawing.Point(553, 201);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 25);
             this.label6.TabIndex = 11;
@@ -159,7 +160,7 @@
             // 
             this.cbLoai.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLoai.FormattingEnabled = true;
-            this.cbLoai.Location = new System.Drawing.Point(674, 198);
+            this.cbLoai.Location = new System.Drawing.Point(717, 198);
             this.cbLoai.Name = "cbLoai";
             this.cbLoai.Size = new System.Drawing.Size(149, 33);
             this.cbLoai.TabIndex = 10;
@@ -186,7 +187,7 @@
             // txtSoLuongTon
             // 
             this.txtSoLuongTon.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuongTon.Location = new System.Drawing.Point(674, 121);
+            this.txtSoLuongTon.Location = new System.Drawing.Point(717, 121);
             this.txtSoLuongTon.Name = "txtSoLuongTon";
             this.txtSoLuongTon.Size = new System.Drawing.Size(168, 34);
             this.txtSoLuongTon.TabIndex = 7;
@@ -196,7 +197,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(488, 124);
+            this.label4.Location = new System.Drawing.Point(513, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 25);
             this.label4.TabIndex = 6;
@@ -205,7 +206,7 @@
             // txtGiaBan
             // 
             this.txtGiaBan.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiaBan.Location = new System.Drawing.Point(674, 43);
+            this.txtGiaBan.Location = new System.Drawing.Point(717, 37);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(168, 34);
             this.txtGiaBan.TabIndex = 5;
@@ -215,7 +216,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(527, 46);
+            this.label3.Location = new System.Drawing.Point(561, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 25);
             this.label3.TabIndex = 4;
@@ -226,7 +227,7 @@
             this.txtTenHoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenHoa.Location = new System.Drawing.Point(162, 115);
             this.txtTenHoa.Name = "txtTenHoa";
-            this.txtTenHoa.Size = new System.Drawing.Size(168, 34);
+            this.txtTenHoa.Size = new System.Drawing.Size(214, 34);
             this.txtTenHoa.TabIndex = 3;
             // 
             // label2
@@ -246,7 +247,6 @@
             this.txtMaHoa.Name = "txtMaHoa";
             this.txtMaHoa.Size = new System.Drawing.Size(168, 34);
             this.txtMaHoa.TabIndex = 1;
-            this.txtMaHoa.TextChanged += new System.EventHandler(this.txtMaHoa_TextChanged);
             // 
             // label1
             // 
@@ -265,7 +265,7 @@
             this.ClientSize = new System.Drawing.Size(1083, 670);
             this.Controls.Add(this.grb1);
             this.Controls.Add(this.dgvHangHoa);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fHangHoa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fHangHoa_FormClosing);
             this.Load += new System.EventHandler(this.fHangHoa_Load);
@@ -295,6 +295,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaHoa;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

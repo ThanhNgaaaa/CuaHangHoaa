@@ -71,18 +71,33 @@ namespace CuaHangHoa
         }
 
         private void btnThem_Click(object sender, EventArgs e)
-        {
-            if (KiemTraThongTin())
+        { try
             {
-                string sqlThem = "insert into KhachHang values(@MaKH, @TenKH, @SDT)";
-                SqlCommand command = new SqlCommand(sqlThem, connection);
-                command.Parameters.AddWithValue("MaKh", txtMaKh.Text);
-                command.Parameters.AddWithValue("TenKh", txtTenKh.Text);
-                command.Parameters.AddWithValue("SDT", txtSdt.Text);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Thêm khách hàng thành công", "Thông báo ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                HienThi();
+                if (KiemTraThongTin())
+                {
+                    string sqlThem = "insert into KhachHang values(@MaKH, @TenKH, @SDT)";
+                    SqlCommand command = new SqlCommand(sqlThem, connection);
+                    command.Parameters.AddWithValue("MaKh", txtMaKh.Text);
+                    command.Parameters.AddWithValue("TenKh", txtTenKh.Text);
+                    command.Parameters.AddWithValue("SDT", txtSdt.Text);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Thêm khách hàng thành công", "Thông báo ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HienThi();
+                }
             }
+            catch
+            {
+                MessageBox.Show("THÊM BỊ LỖI", "THÔNG BÁO", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = false;
+            txtMaKh.ReadOnly = false;
+            txtMaKh.Text = "";
+            txtTenKh.Text = "";
+            txtSdt.Text = "";
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -104,8 +119,11 @@ namespace CuaHangHoa
             {
                 MessageBox.Show("SỬA THẤT BẠI", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            btnThoat.Enabled = false;
+            btnThem.Enabled = false;
+            btnXoa.Enabled = false;
+            btnHuy.Enabled = true;
 
-            
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -121,6 +139,10 @@ namespace CuaHangHoa
                 MessageBox.Show("Xóa thông tin khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 HienThi();
             }
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = false;
         }
 
         
@@ -151,9 +173,12 @@ namespace CuaHangHoa
             txtSdt.Text = Convert.ToString(row.Cells["SDT"].Value);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnHuy_Click(object sender, EventArgs e)
         {
-
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            btnThoat.Enabled = true;
         }
     }
 }
