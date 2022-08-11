@@ -165,6 +165,15 @@ namespace CuaHangHoa
             }
 
         }
+        private void Reset()
+        {
+            txtGiaBan.Text = "";
+            txtMaHoa.Text = "";
+            txtSoLuongTon.Text = "";
+            txtTenHoa.Text = "";
+            txtGiaGoc.Text = "";
+            cbLoai.Text = "";
+        }
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
             if (ThongTinHangHoa())
@@ -180,6 +189,7 @@ namespace CuaHangHoa
                 command.ExecuteNonQuery();
                 HienThi();
                 MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
+                Reset();
             }
             btnThem.Enabled=false;
             btnSua.Enabled=false;
@@ -188,12 +198,10 @@ namespace CuaHangHoa
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
-           DialogResult = MessageBox.Show("Bạn có muốn thoát không ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if(DialogResult == DialogResult.OK)
+            if (MessageBox.Show("Bạn có muốn thoát khỏi giao diện này", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
-            }  else
-                Focus();
+            }
 
         }
         private void txtGiaBan_KeyPress(object sender, KeyPressEventArgs e)

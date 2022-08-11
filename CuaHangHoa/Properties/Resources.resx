@@ -124,8 +124,11 @@
   <data name="Graphicloads-100-Flat-Close1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Graphicloads-100-Flat-Close.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dong3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\dong.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="them" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\them.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Graphicloads-100-Flat-Close3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\Graphicloads-100-Flat-Close.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Button-Delete-icon (1)2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Button-Delete-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,8 +139,8 @@
   <data name="Button-Delete-icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\Button-Delete-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dong1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\dong.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Awicons-Vista-Artistic-Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\Awicons-Vista-Artistic-Add.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Double-J-Design-Origami-Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\Double-J-Design-Origami-Save.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,11 +148,14 @@
   <data name="Graphicloads-100-Flat-Close2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Graphicloads-100-Flat-Close.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dong" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\dong.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Button-Delete-icon (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Button-Delete-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Button-Delete-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\Button-Delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background_Flower" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\background_Flower.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Etherbrian-Webuosities-Fix-it" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\Etherbrian-Webuosities-Fix-it.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,22 +175,19 @@
   <data name="Hopstarter-Button-Button-Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\Hopstarter-Button-Button-Delete.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Awicons-Vista-Artistic-Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\Awicons-Vista-Artistic-Add.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dong3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\dong.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="them" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\them.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dong1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\dong.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dong" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\dong.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Graphicloads-100-Flat-Close3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\Graphicloads-100-Flat-Close.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Button-Delete-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\Button-Delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Etherbrian-Webuosities-Fix-it1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Etherbrian-Webuosities-Fix-it.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background_Flower" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\background_Flower.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Double-J-Design-Origami-Save1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\Double-J-Design-Origami-Save.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

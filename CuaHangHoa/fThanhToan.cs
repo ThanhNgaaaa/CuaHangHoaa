@@ -305,7 +305,10 @@ namespace CuaHangHoa
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Bạn có muốn thoát khỏi hóa đơn", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void dtgv_HoaDon_DoubleClick(object sender, EventArgs e)

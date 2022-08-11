@@ -17,7 +17,7 @@ namespace CuaHangHoa
         SqlConnection connection;
         void HienThi()
         {
-            string sqlSelect = "select MaLoai as[Mã Loại], MaHoa as[Mã Hoa], TenHoa as[Tên Hoa], GiaGoc as[Giá Gốc], GiaBan as[Giá Bán] from Hoa ";
+            string sqlSelect = "Select H.MaLoai as[Mã Loại],L.TenLoai as[Tên Loại],  H.MaHoa as[Mã Hoa], H.TenHoa as[Tên Hoa], H.GiaGoc as[Giá Gốc], H.GiaBan as[Giá Bán] from Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -39,21 +39,28 @@ namespace CuaHangHoa
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
             connection.Open();
+
             HienThi();
+            btnHuy.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String sqlTimKiem = "Select MaLoai, MaHoa, TenHoa, GiaGoc, GiaBan from Hoa where  @TenHoa =TenHoa or @MaLoai =MaLoai or @MaHoa = MaHoa ";
+            
+            String sqlTimKiem = "Select H.MaLoai as[Mã Loại],L.TenLoai as[Tên Loại],  H.MaHoa as[Mã Hoa], H.TenHoa as[Tên Hoa], H.GiaGoc as[Giá Gốc], H.GiaBan as[Giá Bán] from Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai and H.TenHoa like N'%@TenHoa%' or @MaLoai =H.MaLoai or @MaHoa = H.MaHoa or @GiaBan =H.GiaBan  ";
             SqlCommand command = new SqlCommand(sqlTimKiem, connection);
             command.Parameters.AddWithValue("MaLoai", cmbMaLoai.Text);
-            command.Parameters.AddWithValue("MaHoa", txtTenLoai.Text);
+            command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
             command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
+            command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
+
             command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             DataTable table = new DataTable(sqlTimKiem);
             table.Load(dr);
             dtgv_CapNhat.DataSource = table;
+            btnHuy.Enabled = true;
+            btnCapNhat.Enabled = true;
 
         }
         private bool KiemTraThongTin()
@@ -64,10 +71,10 @@ namespace CuaHangHoa
                 cmbMaLoai.Focus();
                 return false;
             }
-            if (txtTenLoai.Text == "")
+            if (txtMaHoa.Text == "")
             {
                 MessageBox.Show("Vui lòng chọn Mã Hoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtTenLoai.Focus();
+                txtMaHoa.Focus();
                 return false;
             }
             if (txtTenHoa.Text == "")
@@ -90,16 +97,6 @@ namespace CuaHangHoa
                 return false;
             }
             return true;
-        }
-
-        private void dtgv_CapNhat_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = new DataGridViewRow();
-            row = dtgv_CapNhat.Rows[e.RowIndex];
-            cmbMaLoai.Text = Convert.ToString(row.Cells["Mã Loại"].Value);
-            txtTenLoai.Text = Convert.ToString(row.Cells["Mã Hoa"].Value);
-            txtTenHoa.Text = Convert.ToString(row.Cells["Tên Hoa"].Value);
-            txtGiaBan.Text = Convert.ToString(row.Cells["Giá Bán"].Value);
         }
 
         private void txtGiaMoi_KeyPress(object sender, KeyPressEventArgs e)
@@ -128,10 +125,12 @@ namespace CuaHangHoa
                 e.Handled = true;
             }
         }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Bạn có muốn thoát khỏi giao diện cập nhật giá", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -140,20 +139,59 @@ namespace CuaHangHoa
             {
                 try
                 {
+                    if(txtGiaBan.Text != txtGiaMoi.Text)
+                    {
 
                     String sqlCapNhatGia = "Update Hoa set GiaBan=@GiaMoi  where @MaHoa = MaHoa";
                     SqlCommand command = new SqlCommand(sqlCapNhatGia, connection);
-                    command.Parameters.AddWithValue("MaHoa", txtTenLoai.Text);
+                    command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
                     command.Parameters.AddWithValue("GiaMoi", txtGiaMoi.Text);
                     command.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     HienThi();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Giá mới trùng với giá cũ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtGiaMoi.Text = "";
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+            btnHuy.Enabled = true;
+            btn_TimKiem.Enabled = false;
+            txtGiaBan.ReadOnly = true;
+        }
+
+        private void dtgv_CapNhat_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row = dtgv_CapNhat.Rows[e.RowIndex];
+            cmbMaLoai.Text = Convert.ToString(row.Cells["Mã Loại"].Value);
+            cmbMaLoai.Text = Convert.ToString(row.Cells["Tên Loại"].Value);
+            txtMaHoa.Text = Convert.ToString(row.Cells["Mã Hoa"].Value);
+            txtTenHoa.Text = Convert.ToString(row.Cells["Tên Hoa"].Value);
+            txtGiaBan.Text = Convert.ToString(row.Cells["Giá Bán"].Value);
+            txtGiaMoi.Text = "";
+        }
+        private void Reset()
+        {
+            cmbMaLoai.Text = "";
+            txtGiaBan.Text = "";
+            txtGiaMoi.Text = "";
+            txtTenHoa.Text = "";
+            txtMaHoa.Text = "";
+        }
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            btnCapNhat.Enabled = true;
+            btn_TimKiem.Enabled = true;
+            btnThoat.Enabled = true;
+            Reset();
+            HienThi();
         }
     }
 }

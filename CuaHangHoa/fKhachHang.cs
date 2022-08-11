@@ -60,14 +60,11 @@ namespace CuaHangHoa
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("BẠN CÓ MUỐN THOÁT KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (DialogResult == DialogResult.OK)
+            if (MessageBox.Show("Bạn có muốn thoát khỏi giao diện khách hàng", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
             }
-            else
-                Focus();
-            
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)

@@ -76,7 +76,10 @@ namespace CuaHangHoa
         }
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát phiên đăng nhập ?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Close();
+            }
         }
         private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {

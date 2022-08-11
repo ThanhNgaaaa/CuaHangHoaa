@@ -33,8 +33,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txbPassWord = new System.Windows.Forms.Panel();
-            this.picAnMK = new System.Windows.Forms.PictureBox();
-            this.picHienMK = new System.Windows.Forms.PictureBox();
             this.txtPassWord = new System.Windows.Forms.TextBox();
             this.tnbUserName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,12 +40,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picAnMK = new System.Windows.Forms.PictureBox();
+            this.picHienMK = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.txbPassWord.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAnMK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHienMK)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnMK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHienMK)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -102,30 +102,6 @@
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.Size = new System.Drawing.Size(656, 81);
             this.txbPassWord.TabIndex = 1;
-            // 
-            // picAnMK
-            // 
-            this.picAnMK.Image = ((System.Drawing.Image)(resources.GetObject("picAnMK.Image")));
-            this.picAnMK.Location = new System.Drawing.Point(594, 25);
-            this.picAnMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picAnMK.Name = "picAnMK";
-            this.picAnMK.Size = new System.Drawing.Size(61, 32);
-            this.picAnMK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAnMK.TabIndex = 4;
-            this.picAnMK.TabStop = false;
-            this.picAnMK.Click += new System.EventHandler(this.picAnMK_Click);
-            // 
-            // picHienMK
-            // 
-            this.picHienMK.Image = ((System.Drawing.Image)(resources.GetObject("picHienMK.Image")));
-            this.picHienMK.Location = new System.Drawing.Point(592, 25);
-            this.picHienMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picHienMK.Name = "picHienMK";
-            this.picHienMK.Size = new System.Drawing.Size(61, 32);
-            this.picHienMK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picHienMK.TabIndex = 3;
-            this.picHienMK.TabStop = false;
-            this.picHienMK.Click += new System.EventHandler(this.picHienMK_Click);
             // 
             // txtPassWord
             // 
@@ -200,6 +176,30 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // picAnMK
+            // 
+            this.picAnMK.Image = ((System.Drawing.Image)(resources.GetObject("picAnMK.Image")));
+            this.picAnMK.Location = new System.Drawing.Point(594, 25);
+            this.picAnMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picAnMK.Name = "picAnMK";
+            this.picAnMK.Size = new System.Drawing.Size(61, 32);
+            this.picAnMK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAnMK.TabIndex = 4;
+            this.picAnMK.TabStop = false;
+            this.picAnMK.Click += new System.EventHandler(this.picAnMK_Click);
+            // 
+            // picHienMK
+            // 
+            this.picHienMK.Image = ((System.Drawing.Image)(resources.GetObject("picHienMK.Image")));
+            this.picHienMK.Location = new System.Drawing.Point(592, 25);
+            this.picHienMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picHienMK.Name = "picHienMK";
+            this.picHienMK.Size = new System.Drawing.Size(61, 32);
+            this.picHienMK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picHienMK.TabIndex = 3;
+            this.picHienMK.TabStop = false;
+            this.picHienMK.Click += new System.EventHandler(this.picHienMK_Click);
+            // 
             // fDangnhap
             // 
             this.AcceptButton = this.btnLogin;
@@ -211,6 +211,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "fDangnhap";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -221,11 +222,11 @@
             this.panel1.ResumeLayout(false);
             this.txbPassWord.ResumeLayout(false);
             this.txbPassWord.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAnMK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHienMK)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnMK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHienMK)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

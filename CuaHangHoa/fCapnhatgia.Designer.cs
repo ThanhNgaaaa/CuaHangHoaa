@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cập_nhật_giá));
             this.dtgv_CapNhat = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbMaLoai = new System.Windows.Forms.ComboBox();
@@ -38,15 +39,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTenHoa = new System.Windows.Forms.TextBox();
-            this.txtTenLoai = new System.Windows.Forms.TextBox();
+            this.txtMaHoa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnCapNhat = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_TimKiem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_TimKiem = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.btnCapNhat = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_CapNhat)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,23 +55,24 @@
             // 
             // dtgv_CapNhat
             // 
+            this.dtgv_CapNhat.BackgroundColor = System.Drawing.Color.White;
             this.dtgv_CapNhat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_CapNhat.Location = new System.Drawing.Point(23, 333);
             this.dtgv_CapNhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgv_CapNhat.Name = "dtgv_CapNhat";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_CapNhat.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_CapNhat.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgv_CapNhat.RowHeadersWidth = 51;
             this.dtgv_CapNhat.RowTemplate.Height = 24;
             this.dtgv_CapNhat.Size = new System.Drawing.Size(1238, 337);
             this.dtgv_CapNhat.TabIndex = 3;
-            this.dtgv_CapNhat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CapNhat_CellContentClick);
+            this.dtgv_CapNhat.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgv_CapNhat_CellMouseClick);
             // 
             // panel1
             // 
@@ -83,7 +85,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtTenHoa);
-            this.panel1.Controls.Add(this.txtTenLoai);
+            this.panel1.Controls.Add(this.txtMaHoa);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(24, 11);
@@ -103,7 +105,7 @@
             this.cmbMaLoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbMaLoai.Name = "cmbMaLoai";
             this.cmbMaLoai.Size = new System.Drawing.Size(450, 40);
-            this.cmbMaLoai.TabIndex = 13;
+            this.cmbMaLoai.TabIndex = 1;
             // 
             // label5
             // 
@@ -122,7 +124,7 @@
             this.txtGiaBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(283, 39);
-            this.txtGiaBan.TabIndex = 9;
+            this.txtGiaBan.TabIndex = 4;
             this.txtGiaBan.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.txtGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaBan_KeyPress);
             // 
@@ -133,7 +135,7 @@
             this.txtGiaMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGiaMoi.Name = "txtGiaMoi";
             this.txtGiaMoi.Size = new System.Drawing.Size(283, 39);
-            this.txtGiaMoi.TabIndex = 8;
+            this.txtGiaMoi.TabIndex = 5;
             this.txtGiaMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaMoi_KeyPress);
             // 
             // label4
@@ -165,14 +167,14 @@
             this.txtTenHoa.Size = new System.Drawing.Size(450, 39);
             this.txtTenHoa.TabIndex = 3;
             // 
-            // txtTenLoai
+            // txtMaHoa
             // 
-            this.txtTenLoai.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenLoai.Location = new System.Drawing.Point(184, 78);
-            this.txtTenLoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTenLoai.Name = "txtTenLoai";
-            this.txtTenLoai.Size = new System.Drawing.Size(450, 39);
-            this.txtTenLoai.TabIndex = 2;
+            this.txtMaHoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaHoa.Location = new System.Drawing.Point(184, 78);
+            this.txtMaHoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMaHoa.Name = "txtMaHoa";
+            this.txtMaHoa.Size = new System.Drawing.Size(450, 39);
+            this.txtMaHoa.TabIndex = 2;
             // 
             // label2
             // 
@@ -192,7 +194,50 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tên loại : ";
+            this.label1.Text = "Mã Hoa : ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btn_TimKiem);
+            this.panel2.Controls.Add(this.btnThoat);
+            this.panel2.Controls.Add(this.btnCapNhat);
+            this.panel2.Controls.Add(this.btnHuy);
+            this.panel2.Location = new System.Drawing.Point(24, 221);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1241, 113);
+            this.panel2.TabIndex = 16;
+            // 
+            // btn_TimKiem
+            // 
+            this.btn_TimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn_TimKiem.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_TimKiem.Image = global::CuaHangHoa.Properties.Resources.Aha_Soft_Large_Business_Zoom1;
+            this.btn_TimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_TimKiem.Location = new System.Drawing.Point(612, 12);
+            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btn_TimKiem.Name = "btn_TimKiem";
+            this.btn_TimKiem.Size = new System.Drawing.Size(224, 76);
+            this.btn_TimKiem.TabIndex = 8;
+            this.btn_TimKiem.Text = "Tìm kiếm ";
+            this.btn_TimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_TimKiem.UseVisualStyleBackColor = false;
+            this.btn_TimKiem.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.Image = global::CuaHangHoa.Properties.Resources.dong2;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(951, 12);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(183, 76);
+            this.btnThoat.TabIndex = 9;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnCapNhat
             // 
@@ -204,69 +249,27 @@
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(222, 79);
-            this.btnCapNhat.TabIndex = 13;
+            this.btnCapNhat.TabIndex = 6;
             this.btnCapNhat.Text = "Cập Nhật";
             this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhat.UseVisualStyleBackColor = false;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
-            // btnThoat
+            // btnHuy
             // 
-            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Image = global::CuaHangHoa.Properties.Resources.dong2;
-            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(655, 12);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(183, 76);
-            this.btnThoat.TabIndex = 12;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::CuaHangHoa.Properties.Resources.Graphicloads_100_Flat_Close2;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(352, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(173, 79);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Hủy";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btn_TimKiem
-            // 
-            this.btn_TimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btn_TimKiem.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_TimKiem.Image = global::CuaHangHoa.Properties.Resources.Aha_Soft_Large_Business_Zoom1;
-            this.btn_TimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_TimKiem.Location = new System.Drawing.Point(951, 12);
-            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btn_TimKiem.Name = "btn_TimKiem";
-            this.btn_TimKiem.Size = new System.Drawing.Size(224, 76);
-            this.btn_TimKiem.TabIndex = 10;
-            this.btn_TimKiem.Text = "Tìm kiếm ";
-            this.btn_TimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_TimKiem.UseVisualStyleBackColor = false;
-            this.btn_TimKiem.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btn_TimKiem);
-            this.panel2.Controls.Add(this.btnThoat);
-            this.panel2.Controls.Add(this.btnCapNhat);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(24, 221);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1241, 113);
-            this.panel2.TabIndex = 16;
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Image = global::CuaHangHoa.Properties.Resources.Graphicloads_100_Flat_Close2;
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHuy.Location = new System.Drawing.Point(352, 9);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(173, 79);
+            this.btnHuy.TabIndex = 7;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // Cập_nhật_giá
             // 
@@ -277,6 +280,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtgv_CapNhat);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Cập_nhật_giá";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -299,7 +303,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTenHoa;
-        private System.Windows.Forms.TextBox txtTenLoai;
+        private System.Windows.Forms.TextBox txtMaHoa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -307,7 +311,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnCapNhat;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Panel panel2;
     }
 }

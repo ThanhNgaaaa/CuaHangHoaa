@@ -237,6 +237,7 @@ WHERE MaNv = @MaNv";
                 command.ExecuteNonQuery();
                 MessageBox.Show("BẠN ĐÃ xoá THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
                 HienThi();
+                Reset();
             }
         }
 
@@ -249,14 +250,10 @@ WHERE MaNv = @MaNv";
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("BẠN CÓ MUỐN THOÁT HAY KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel);
-            if (DialogResult == DialogResult.OK)
+            if (MessageBox.Show("Bạn có muốn thoát hay không?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
-
             }
-            else
-                Focus();
         }
 
         private void btntim_Click(object sender, EventArgs e)
@@ -297,6 +294,15 @@ WHERE MaNv = @MaNv";
         private void txttimkiemten_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void Reset()
+        {
+            txtManv.Text = "";
+            txtmk.Text = "";
+            txttennv.Text = "";
+            txtsdt.Text = "";
+            txttentk.Text = "";
+            cbbloai.Text = "";
         }
     }
 }

@@ -203,6 +203,16 @@ namespace CuaHangHoa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Double_J_Design_Origami_Save1 {
+            get {
+                object obj = ResourceManager.GetObject("Double-J-Design-Origami-Save1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Etherbrian_Webuosities_Fix_it {
             get {
                 object obj = ResourceManager.GetObject("Etherbrian-Webuosities-Fix-it", resourceCulture);

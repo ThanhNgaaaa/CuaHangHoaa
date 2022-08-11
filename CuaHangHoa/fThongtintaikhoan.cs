@@ -28,7 +28,28 @@ namespace CuaHangHoa
         {
 
         }
-
+        private bool KiemTraThongTin()
+        {
+            if (txtMatKhau.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtMatKhau.Focus();
+                return false;
+            }
+            if (txtMKmoi.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtMKmoi.Focus();
+                return false;
+            }
+            if (txtNhapLaiMatkhau.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập lại mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtNhapLaiMatkhau.Focus();
+                return false;
+            }           
+            return true;
+        }
         private void Thông_tin_tài_khoản_Load(object sender, EventArgs e)
         {
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
@@ -46,11 +67,11 @@ namespace CuaHangHoa
             DataTable dt = new DataTable();
             da.Fill(dt);
             errorProviderCapNhatMK.Clear();
-            if (dt.Rows[0][0].ToString() == "1")
+            if (dt.Rows[0][0].ToString() == "1" && KiemTraThongTin())
             {
                 if(txtMKmoi.Text == txtNhapLaiMatkhau.Text)
                 {
-                    if (txtMKmoi.Text.Length > 5)
+                    if (txtMKmoi.Text.Length > 5 && txtMKmoi.Text.Length <20)
                     {
                         string sqlCapNhatMKmoi = "update NhanVien set MatKhau ='" + txtMKmoi.Text + "' where TenTaiKhoan ='"+ txtTenDangNhap.Text + "' and MatKhau ='" + txtMatKhau.Text + "'";
                         SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter(sqlCapNhatMKmoi, connection);
@@ -61,7 +82,9 @@ namespace CuaHangHoa
                     }
                     else
                     {
-                        MessageBox.Show("Vui lòng nhập mật khẩu dài hơn 6 kí tự ");
+                        MessageBox.Show("Vui lòng nhập mật khẩu từ 6 đến 20 ký tự. Quý khách vui lòng kiểm tra lại", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        txtMKmoi.Text = "";
+                        txtNhapLaiMatkhau.Text = "";
                     }
                 }
                 else
@@ -72,10 +95,17 @@ namespace CuaHangHoa
             }
             else
             {
-                errorProviderCapNhatMK.SetError(txtTenDangNhap, "Tên đăng nhập không đúng!");
                 errorProviderCapNhatMK.SetError(txtMatKhau, "Mật khẩu không đúng!");
             }
 
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn thoát khỏi cập nhật mật khẩu", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Close();
+            }
         }
     }
 }
