@@ -460,5 +460,10 @@ namespace CuaHangHoa
         {
 
         }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
