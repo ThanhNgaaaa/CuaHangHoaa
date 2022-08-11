@@ -23,7 +23,9 @@ namespace CuaHangHoa
             DataTable table = new DataTable();
             table.Load(dr);
             dtgv_CapNhat.DataSource = table;
+            dtgv_CapNhat.Columns["Tên Hoa"].Width = 150;
             loadcombo();
+            
         }
         private void loadcombo()
         {
@@ -139,7 +141,7 @@ namespace CuaHangHoa
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát khỏi giao diện cập nhật giá", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("BẠN CÓ MUỐN THOÁT KHỎI CHỨC NĂNG NÀY KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
             }

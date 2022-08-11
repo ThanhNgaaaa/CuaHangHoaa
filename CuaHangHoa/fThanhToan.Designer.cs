@@ -208,6 +208,12 @@
             this.nmSoLuong.Name = "nmSoLuong";
             this.nmSoLuong.Size = new System.Drawing.Size(119, 34);
             this.nmSoLuong.TabIndex = 4;
+            this.nmSoLuong.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmSoLuong.ValueChanged += new System.EventHandler(this.nmSoLuong_ValueChanged);
             // 
             // label7
             // 

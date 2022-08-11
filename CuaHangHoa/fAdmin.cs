@@ -257,7 +257,7 @@ WHERE MaNv = @MaNv";
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát hay không?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("BẠN CÓ MUỐN THOÁT KHỎI CHỨC NĂNG NÀY KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
             }
@@ -310,6 +310,11 @@ WHERE MaNv = @MaNv";
             txtsdt.Text = "";
             txttentk.Text = "";
             cbbloai.Text = "";
+        }
+
+        private void txtmk_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

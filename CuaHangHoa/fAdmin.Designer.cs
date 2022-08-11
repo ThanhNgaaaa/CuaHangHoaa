@@ -78,6 +78,7 @@
             this.txtmk.Name = "txtmk";
             this.txtmk.Size = new System.Drawing.Size(240, 34);
             this.txtmk.TabIndex = 20;
+            this.txtmk.TextChanged += new System.EventHandler(this.txtmk_TextChanged);
             // 
             // txttentk
             // 

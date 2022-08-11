@@ -304,7 +304,7 @@ namespace CuaHangHoa
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát khỏi hóa đơn", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("BẠN CÓ MUỐN THOÁT KHỎI CHỨC NĂNG NÀY KHÔNG ? ", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
             }
@@ -339,6 +339,11 @@ namespace CuaHangHoa
                 txtTongTien.Text = tongmoi.ToString();
                 LoadDataGridView();
             }
+        }
+
+        private void nmSoLuong_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

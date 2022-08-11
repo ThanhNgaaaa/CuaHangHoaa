@@ -38,8 +38,8 @@ namespace CuaHangHoa
 
 
             string sql = @"
-SELECT	NhanVien.MaNv as [Mã nhân viên],
-		NhanVien.TenNv as [Tên nhân viên],
+SELECT	NhanVien.MaNv  ,
+		NhanVien.TenNv ,
 		SUM(ChiTietHoaDon.DonGia) AS TongTien
 FROM NhanVien INNER JOIN HoaDon ON NhanVien.MaNv = HoaDon.MaNv
 			  INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
