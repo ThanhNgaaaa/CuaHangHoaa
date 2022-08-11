@@ -193,6 +193,16 @@ namespace CuaHangHoa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dong4 {
+            get {
+                object obj = ResourceManager.GetObject("dong4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Double_J_Design_Origami_Save {
             get {
                 object obj = ResourceManager.GetObject("Double-J-Design-Origami-Save", resourceCulture);
