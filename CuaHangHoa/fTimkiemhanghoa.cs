@@ -15,7 +15,7 @@ namespace CuaHangHoa
     public partial class fTimkiemhanghoa : Form
     {
         SqlConnection connection;
-       
+        private bool isThem = false;
         public fTimkiemhanghoa()
         {
             InitializeComponent();
@@ -26,11 +26,10 @@ namespace CuaHangHoa
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
             connection.Open();
-            //loadcombo();
+
             HienThi();
             ckTimkiemhoa_CheckedChanged(sender, e);
-            //checkBox2_CheckedChanged(sender, e);
-            //cbLoai_SelectedIndexChanged(sender, e);
+         
         }
         public void HienThi()
         {
@@ -40,6 +39,11 @@ namespace CuaHangHoa
             DataTable table = new DataTable();
             table.Load(dr);
             dgvTimKiem.DataSource = table;
+            if(table.Rows.Count > 0)
+            {
+                dgvTimKiem.Rows[0].Selected = true;
+            }
+            isThem = false;
         }
         private void loadcombo()
         {
@@ -104,8 +108,6 @@ namespace CuaHangHoa
             else
             
                 txtTentim.Visible = false;
-           
-           
         }
 
         private void txtTentim_KeyDown(object sender, KeyEventArgs e)
@@ -118,6 +120,15 @@ namespace CuaHangHoa
                 DataTable table = new DataTable();
                 table.Load(dr);
                 dgvTimKiem.DataSource = table;
+                if (table.Rows.Count > 0)
+                {
+                    dgvTimKiem.Rows[0].Selected = true;
+                }
+                else
+                {
+                    MessageBox.Show("KHÔNG TỒN TẠI !", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                isThem = false;
             }
            
         }

@@ -294,5 +294,9 @@ WHERE MaNv = @MaNv";
 
         }
 
+        private void txttimkiemten_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

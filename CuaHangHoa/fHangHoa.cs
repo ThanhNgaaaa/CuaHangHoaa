@@ -40,6 +40,7 @@ namespace CuaHangHoa
             DataTable table = new DataTable();
             table.Load(dr);
             dgvHangHoa.DataSource = table;
+            
         }
         private void loadcombo()
         {
@@ -60,6 +61,7 @@ namespace CuaHangHoa
         private bool ThongTinHangHoa()
         {
             {
+                
                 if (txtMaHoa.Text == "")
                 {
                     MessageBox.Show("Vui lòng nhập mã hoa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

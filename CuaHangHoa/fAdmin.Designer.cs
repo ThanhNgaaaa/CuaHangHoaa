@@ -251,6 +251,7 @@
             this.txttimkiemten.Name = "txttimkiemten";
             this.txttimkiemten.Size = new System.Drawing.Size(351, 34);
             this.txttimkiemten.TabIndex = 9;
+            this.txttimkiemten.TextChanged += new System.EventHandler(this.txttimkiemten_TextChanged);
             this.txttimkiemten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttimkiemten_KeyDown);
             // 
             // btntim
@@ -350,7 +351,7 @@
             this.Controls.Add(this.dgvnhanvien);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txttennv);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fAdmin";
             this.Text = "Quản lý nhân viên";
             this.Load += new System.EventHandler(this.fAdmin_Load);
