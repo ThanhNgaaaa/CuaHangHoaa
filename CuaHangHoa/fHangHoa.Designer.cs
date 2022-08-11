@@ -193,7 +193,7 @@
             this.txtGiaGoc.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGiaGoc.Location = new System.Drawing.Point(162, 201);
             this.txtGiaGoc.Name = "txtGiaGoc";
-            this.txtGiaGoc.Size = new System.Drawing.Size(214, 34);
+            this.txtGiaGoc.Size = new System.Drawing.Size(263, 34);
             this.txtGiaGoc.TabIndex = 9;
             this.txtGiaGoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaGoc_KeyPress);
             // 
@@ -250,7 +250,7 @@
             this.txtTenHoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenHoa.Location = new System.Drawing.Point(162, 115);
             this.txtTenHoa.Name = "txtTenHoa";
-            this.txtTenHoa.Size = new System.Drawing.Size(214, 34);
+            this.txtTenHoa.Size = new System.Drawing.Size(263, 34);
             this.txtTenHoa.TabIndex = 3;
             // 
             // label2
@@ -268,7 +268,7 @@
             this.txtMaHoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaHoa.Location = new System.Drawing.Point(162, 46);
             this.txtMaHoa.Name = "txtMaHoa";
-            this.txtMaHoa.Size = new System.Drawing.Size(214, 34);
+            this.txtMaHoa.Size = new System.Drawing.Size(263, 34);
             this.txtMaHoa.TabIndex = 1;
             // 
             // label1
