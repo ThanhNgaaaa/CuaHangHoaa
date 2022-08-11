@@ -71,11 +71,15 @@ namespace CuaHangHoa
                 {
                     dgvnhanvien.Rows[0].Selected = true;
                 }
-
+                else
+                {
+                    MessageBox.Show("Không có nhân viên tên này");
+                }  
+                
                 isThem = false;
                 AnHienControl();
             }
-            else
+            else // Hiển thị tất cả dữ liệu khi tìm kiếm trống
             {
                 HienThi();
             }    
