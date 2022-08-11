@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CuaHangHoa
 {
-    public partial class Cập_nhật_giá : Form
+    public partial class fCapnhatgia : Form
     {   
         SqlConnection connection;
         void HienThi()
@@ -23,8 +23,20 @@ namespace CuaHangHoa
             DataTable table = new DataTable();
             table.Load(dr);
             dtgv_CapNhat.DataSource = table;
+            loadcombo();
         }
-        public Cập_nhật_giá()
+        private void loadcombo()
+        {
+            string sqlSelect = "select * from LoaiHoa";
+            SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(dr);
+            cbTenLoai.DataSource = table;
+            cbTenLoai.DisplayMember = table.Columns["TenLoai"].ToString();
+            cbTenLoai.ValueMember = table.Columns["MaLoai"].ToString();
+        }
+        public fCapnhatgia()
         {
             InitializeComponent();
         }
@@ -47,9 +59,9 @@ namespace CuaHangHoa
         private void button1_Click(object sender, EventArgs e)
         {
             
-            String sqlTimKiem = "Select H.MaLoai as[Mã Loại],L.TenLoai as[Tên Loại],  H.MaHoa as[Mã Hoa], H.TenHoa as[Tên Hoa], H.GiaGoc as[Giá Gốc], H.GiaBan as[Giá Bán] from Hoa H, LoaiHoa L where L.MaLoai = H.MaLoai and H.TenHoa like N'%@TenHoa%' or @MaLoai =H.MaLoai or @MaHoa = H.MaHoa or @GiaBan =H.GiaBan  ";
+            String sqlTimKiem = "select Hoa.MaLoai as [Mã loại] ,MaHoa as [Mã hoa],TenHoa as [Tên hoa],GiaGoc as [Giá gốc],GiaBan as [Giá bán],SoLuongTon as [Số lượng tồn],TenLoai as [Tên loại] from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and LoaiHoa.TenLoai = N'" + cbTenLoai.Text + "'  ";
             SqlCommand command = new SqlCommand(sqlTimKiem, connection);
-            command.Parameters.AddWithValue("MaLoai", cmbMaLoai.Text);
+            command.Parameters.AddWithValue("TenLoai", cbTenLoai.Text);
             command.Parameters.AddWithValue("MaHoa", txtMaHoa.Text);
             command.Parameters.AddWithValue("TenHoa", txtTenHoa.Text);
             command.Parameters.AddWithValue("GiaBan", txtGiaBan.Text);
@@ -61,14 +73,14 @@ namespace CuaHangHoa
             dtgv_CapNhat.DataSource = table;
             btnHuy.Enabled = true;
             btnCapNhat.Enabled = true;
-
+      
         }
         private bool KiemTraThongTin()
         {
-            if (cmbMaLoai.Text == "")
+            if (cbTenLoai.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập mã loại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cmbMaLoai.Focus();
+                MessageBox.Show("Vui lòng chọn tên loại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cbTenLoai.Focus();
                 return false;
             }
             if (txtMaHoa.Text == "")
@@ -170,8 +182,8 @@ namespace CuaHangHoa
         {
             DataGridViewRow row = new DataGridViewRow();
             row = dtgv_CapNhat.Rows[e.RowIndex];
-            cmbMaLoai.Text = Convert.ToString(row.Cells["Mã Loại"].Value);
-            cmbMaLoai.Text = Convert.ToString(row.Cells["Tên Loại"].Value);
+            cbTenLoai.Text = Convert.ToString(row.Cells["Mã Loại"].Value);
+            cbTenLoai.Text = Convert.ToString(row.Cells["Tên Loại"].Value);
             txtMaHoa.Text = Convert.ToString(row.Cells["Mã Hoa"].Value);
             txtTenHoa.Text = Convert.ToString(row.Cells["Tên Hoa"].Value);
             txtGiaBan.Text = Convert.ToString(row.Cells["Giá Bán"].Value);
@@ -179,7 +191,7 @@ namespace CuaHangHoa
         }
         private void Reset()
         {
-            cmbMaLoai.Text = "";
+            cbTenLoai.Text = "";
             txtGiaBan.Text = "";
             txtGiaMoi.Text = "";
             txtTenHoa.Text = "";

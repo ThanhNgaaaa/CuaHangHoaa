@@ -95,7 +95,7 @@ namespace CuaHangHoa
 
         private void cậpNhậtGiáToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cập_nhật_giá d = new Cập_nhật_giá();
+            fCapnhatgia d = new fCapnhatgia();
             d.ShowDialog();
         }
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)

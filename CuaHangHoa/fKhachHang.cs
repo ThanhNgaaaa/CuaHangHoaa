@@ -27,6 +27,10 @@ namespace CuaHangHoa
             DataTable table = new DataTable();
             table.Load(dr);
             dtgv_KhachHang.DataSource = table;
+            dtgv_KhachHang.Columns["Mã Khách Hàng"].Width = 150;
+            dtgv_KhachHang.Columns["Tên Khách Hàng"].Width = 150;
+            dtgv_KhachHang.Columns["Số điện thoại"].Width = 150;
+
         }
         private void fKhachHang_Load(object sender, EventArgs e)
         {

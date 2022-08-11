@@ -42,13 +42,13 @@
             // 
             // dgvTimKiem
             // 
+            this.dgvTimKiem.BackgroundColor = System.Drawing.Color.White;
             this.dgvTimKiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTimKiem.Location = new System.Drawing.Point(2, 322);
-            this.dgvTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvTimKiem.Location = new System.Drawing.Point(2, 258);
             this.dgvTimKiem.Name = "dgvTimKiem";
             this.dgvTimKiem.RowHeadersWidth = 51;
             this.dgvTimKiem.RowTemplate.Height = 24;
-            this.dgvTimKiem.Size = new System.Drawing.Size(957, 434);
+            this.dgvTimKiem.Size = new System.Drawing.Size(851, 347);
             this.dgvTimKiem.TabIndex = 1;
             // 
             // gbTimKiem
@@ -59,21 +59,18 @@
             this.gbTimKiem.Controls.Add(this.ckTimtheoloai);
             this.gbTimKiem.Controls.Add(this.ckTimkiem);
             this.gbTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbTimKiem.Location = new System.Drawing.Point(14, 15);
-            this.gbTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbTimKiem.Location = new System.Drawing.Point(12, 12);
             this.gbTimKiem.Name = "gbTimKiem";
-            this.gbTimKiem.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbTimKiem.Size = new System.Drawing.Size(934, 300);
+            this.gbTimKiem.Size = new System.Drawing.Size(830, 240);
             this.gbTimKiem.TabIndex = 6;
             this.gbTimKiem.TabStop = false;
             this.gbTimKiem.Text = "Tìm kiếm hàng hóa";
             // 
             // txtTentim
             // 
-            this.txtTentim.Location = new System.Drawing.Point(726, 155);
-            this.txtTentim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTentim.Location = new System.Drawing.Point(645, 124);
             this.txtTentim.Name = "txtTentim";
-            this.txtTentim.Size = new System.Drawing.Size(201, 35);
+            this.txtTentim.Size = new System.Drawing.Size(179, 30);
             this.txtTentim.TabIndex = 4;
             this.txtTentim.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTentim_KeyDown);
             // 
@@ -81,10 +78,9 @@
             // 
             this.ckTimtheoten.AutoSize = true;
             this.ckTimtheoten.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckTimtheoten.Location = new System.Drawing.Point(511, 155);
-            this.ckTimtheoten.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckTimtheoten.Location = new System.Drawing.Point(454, 124);
             this.ckTimtheoten.Name = "ckTimtheoten";
-            this.ckTimtheoten.Size = new System.Drawing.Size(213, 36);
+            this.ckTimtheoten.Size = new System.Drawing.Size(181, 29);
             this.ckTimtheoten.TabIndex = 3;
             this.ckTimtheoten.Text = "Tìm theo tên : ";
             this.ckTimtheoten.UseVisualStyleBackColor = true;
@@ -93,10 +89,9 @@
             // cbLoai
             // 
             this.cbLoai.FormattingEnabled = true;
-            this.cbLoai.Location = new System.Drawing.Point(260, 155);
-            this.cbLoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbLoai.Location = new System.Drawing.Point(231, 124);
             this.cbLoai.Name = "cbLoai";
-            this.cbLoai.Size = new System.Drawing.Size(222, 34);
+            this.cbLoai.Size = new System.Drawing.Size(198, 31);
             this.cbLoai.TabIndex = 2;
             this.cbLoai.SelectedIndexChanged += new System.EventHandler(this.cbLoai_SelectedIndexChanged);
             // 
@@ -104,10 +99,9 @@
             // 
             this.ckTimtheoloai.AutoSize = true;
             this.ckTimtheoloai.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckTimtheoloai.Location = new System.Drawing.Point(42, 156);
-            this.ckTimtheoloai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckTimtheoloai.Location = new System.Drawing.Point(37, 125);
             this.ckTimtheoloai.Name = "ckTimtheoloai";
-            this.ckTimtheoloai.Size = new System.Drawing.Size(220, 36);
+            this.ckTimtheoloai.Size = new System.Drawing.Size(184, 29);
             this.ckTimtheoloai.TabIndex = 1;
             this.ckTimtheoloai.Text = "Tìm theo loại : ";
             this.ckTimtheoloai.UseVisualStyleBackColor = true;
@@ -117,10 +111,9 @@
             // 
             this.ckTimkiem.AutoSize = true;
             this.ckTimkiem.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckTimkiem.Location = new System.Drawing.Point(42, 74);
-            this.ckTimkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ckTimkiem.Location = new System.Drawing.Point(37, 59);
             this.ckTimkiem.Name = "ckTimkiem";
-            this.ckTimkiem.Size = new System.Drawing.Size(210, 36);
+            this.ckTimkiem.Size = new System.Drawing.Size(176, 29);
             this.ckTimkiem.TabIndex = 0;
             this.ckTimkiem.Text = "Tìm kiếm hoa ";
             this.ckTimkiem.UseVisualStyleBackColor = true;
@@ -128,15 +121,15 @@
             // 
             // fTimkiemhanghoa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(961, 771);
+            this.ClientSize = new System.Drawing.Size(854, 617);
             this.Controls.Add(this.gbTimKiem);
             this.Controls.Add(this.dgvTimKiem);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "fTimkiemhanghoa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tìm_kiếm_hàng_hóa";
             this.Load += new System.EventHandler(this.Tìm_kiếm_hàng_hóa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimKiem)).EndInit();

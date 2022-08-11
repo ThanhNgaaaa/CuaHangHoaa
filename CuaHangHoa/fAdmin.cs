@@ -31,6 +31,7 @@ namespace CuaHangHoa
             connection = new SqlConnection(conn);
             connection.Open();
             HienThi();
+            
         }
 
 
@@ -43,15 +44,15 @@ namespace CuaHangHoa
             table.Load(dr);
             dgvnhanvien.DataSource = table;
 
-            if(table.Rows.Count > 0)
+            if (table.Rows.Count > 0)
             {
                 dgvnhanvien.Rows[0].Selected = true;
             }
 
             isThem = false;
             AnHienControl();
+            dgvnhanvien.Columns["TenNv"].Width = 150;
         }
-
         private void TimKiem()
         {
             if (txttimkiemten.Text.Trim().Length > 0)
@@ -93,6 +94,13 @@ namespace CuaHangHoa
             txttentk.Text = dgvnhanvien.Rows[SoDong].Cells[3].Value.ToString();
             txtmk.Text = dgvnhanvien.Rows[SoDong].Cells[4].Value.ToString();
             cbbloai.Text = dgvnhanvien.Rows[SoDong].Cells[5].Value.ToString();
+            dgvnhanvien.Columns[0].HeaderText = "Mã nhân viên";
+            dgvnhanvien.Columns[1].HeaderText = "Tên nhân viên";
+            dgvnhanvien.Columns[2].HeaderText = "Số điện thoại";
+            dgvnhanvien.Columns[3].HeaderText = "Tên tài khoản";
+            dgvnhanvien.Columns[4].HeaderText = "Mật khẩu";
+            dgvnhanvien.Columns[5].HeaderText = "Loại tài khoản";
+          
         }
 
         private void AnHienControl()
@@ -174,7 +182,6 @@ namespace CuaHangHoa
                         txtManv.Focus();
                         return;
                     }   
-                    
                     if (KiemDuLieu())
                     {
                         String sqlThem = "INSERT INTO NhanVien VALUES (@MaNv, @TenNV, @SDT, @TenTaiKhoan, @MatKhau, @LoaiTaiKhoan)";
@@ -201,7 +208,7 @@ SET LoaiTaiKhoan = @LoaiTaiKhoan,
     TenNV = @TenNV,
     SDT = @SDT,
     TenTaiKhoan = @TenTaiKhoan,
-    @MatKhau = @MatKhau 
+    MatKhau = @MatKhau 
 WHERE MaNv = @MaNv";
                         SqlCommand command = new SqlCommand(SqlEdit, connection);
                         command.Parameters.AddWithValue("MaNv", txtManv.Text);
@@ -235,7 +242,7 @@ WHERE MaNv = @MaNv";
                 command.Parameters.AddWithValue("MatKhau", txtmk.Text);
                 command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
                 command.ExecuteNonQuery();
-                MessageBox.Show("BẠN ĐÃ xoá THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
+                MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
                 HienThi();
                 Reset();
             }

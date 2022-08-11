@@ -243,7 +243,6 @@ namespace CuaHangHoa
         {
             txtMaHD.Text = "";
             dtpNgayLap.Value = DateTime.Now;
-            txtMaNv.Text = "";
             cmbMaKh.Text = "";
             txtTongTien.Text = "0";
             cmbMaHoa.Text = "";

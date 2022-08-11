@@ -33,7 +33,7 @@ namespace CuaHangHoa
         }
         public void HienThi()
         {
-            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai ";
+            string sqlSelect = "select MaHoa as [Mã hoa],TenHoa as [Tên hoa],GiaGoc as [Giá gốc],GiaBan as [Giá bán],SoLuongTon as [Số lượng tồn],TenLoai as [Tên loại] from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -44,6 +44,13 @@ namespace CuaHangHoa
                 dgvTimKiem.Rows[0].Selected = true;
             }
             isThem = false;
+            dgvTimKiem.Columns["Mã hoa"].Width = 80;
+            dgvTimKiem.Columns["Tên hoa"].Width = 150;
+            dgvTimKiem.Columns["Số lượng tồn"].Width = 100;
+            dgvTimKiem.Columns["Giá gốc"].Width = 75;
+            dgvTimKiem.Columns["Giá bán"].Width = 75;
+            dgvTimKiem.Columns["Tên loại"].Width = 105;
+
         }
         private void loadcombo()
         {
@@ -89,7 +96,7 @@ namespace CuaHangHoa
         }
         private void cbLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and LoaiHoa.TenLoai = N'" + cbLoai.Text + "'  ";
+            string sqlSelect = "select MaHoa as [Mã hoa],TenHoa as [Tên hoa],GiaGoc as [Giá gốc],GiaBan as [Giá bán],SoLuongTon as [Số lượng tồn],TenLoai as [Tên loại] from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and LoaiHoa.TenLoai = N'" + cbLoai.Text + "'  ";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -114,7 +121,7 @@ namespace CuaHangHoa
         {
             if(e.KeyCode == Keys.Enter)
             {
-                string sqlSelect = "select MaHoa,TenHoa,GiaGoc,GiaBan,SoLuongTon,TenLoai from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and TenHoa LIKE N'%" + txtTentim.Text + "%' ";
+                string sqlSelect = "select MaHoa as [Mã hoa],TenHoa as [Tên hoa],GiaGoc as [Giá gốc],GiaBan as [Giá bán],SoLuongTon as [Số lượng tồn],TenLoai as [Tên loại] from Hoa, LoaiHoa where Hoa.MaLoai = LoaiHoa.MaLoai and TenHoa LIKE N'%" + txtTentim.Text + "%' ";
                 SqlCommand cmd = new SqlCommand(sqlSelect, connection);
                 SqlDataReader dr = cmd.ExecuteReader();
                 DataTable table = new DataTable();

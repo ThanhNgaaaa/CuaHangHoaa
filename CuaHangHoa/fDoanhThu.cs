@@ -27,6 +27,9 @@ namespace CuaHangHoa
             string conn = ConfigurationManager.ConnectionStrings["QLHOA"].ConnectionString.ToString();
             connection = new SqlConnection(conn);
             connection.Open();
+            TDT_dgvStatistics.Columns["MaNv"].Width = 100;
+          
+
         }
 
         private void TDT_btShow_Click(object sender, EventArgs e)
@@ -35,8 +38,8 @@ namespace CuaHangHoa
 
 
             string sql = @"
-SELECT	NhanVien.MaNv,
-		NhanVien.TenNv,
+SELECT	NhanVien.MaNv as [Mã nhân viên],
+		NhanVien.TenNv as [Tên nhân viên],
 		SUM(ChiTietHoaDon.DonGia) AS TongTien
 FROM NhanVien INNER JOIN HoaDon ON NhanVien.MaNv = HoaDon.MaNv
 			  INNER JOIN ChiTietHoaDon ON HoaDon.MaHoaDon = ChiTietHoaDon.MaHoaDon
