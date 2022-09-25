@@ -61,7 +61,7 @@ namespace CuaHangHoa
                     {
                         foreach (DataRow dr in dt.Rows)
                         {
-                            id = dr["LoaiTaiKhoan"].ToString();
+                            id = dr["MaLoai"].ToString();
                         }                
                     }
                 }

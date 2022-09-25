@@ -187,6 +187,7 @@
             this.cbLoai.Name = "cbLoai";
             this.cbLoai.Size = new System.Drawing.Size(208, 33);
             this.cbLoai.TabIndex = 10;
+            this.cbLoai.SelectedIndexChanged += new System.EventHandler(this.cbLoai_SelectedIndexChanged);
             // 
             // txtGiaGoc
             // 

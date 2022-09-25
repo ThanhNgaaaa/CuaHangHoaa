@@ -29,7 +29,7 @@ namespace CuaHangHoa
 
             HienThi();
             ckTimkiemhoa_CheckedChanged(sender, e);
-         
+
         }
         public void HienThi()
         {
@@ -63,10 +63,10 @@ namespace CuaHangHoa
             cbLoai.DisplayMember = table.Columns["TenLoai"].ToString();
             cbLoai.ValueMember = table.Columns["MaLoai"].ToString();
         }
-       
+
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if(ckTimtheoloai.Checked == true)
+            if (ckTimtheoloai.Checked == true)
             {
                 loadcombo();
             }
@@ -74,19 +74,20 @@ namespace CuaHangHoa
             {
                 cbLoai.DataSource = null;
                 HienThi();
-            }   
+            }
         }
 
         private void ckTimkiemhoa_CheckedChanged(object sender, EventArgs e)
         {
-            if(ckTimkiem.Checked == true) 
+            if (ckTimkiem.Checked == true)
             {
                 ckTimtheoloai.Visible = true;
                 ckTimtheoten.Visible = true;
                 cbLoai.Visible = true;
                 txtTentim.Visible = true;
             }
-            else {
+            else
+            {
                 ckTimtheoloai.Visible = false;
                 ckTimtheoten.Visible = false;
                 cbLoai.Visible = false;

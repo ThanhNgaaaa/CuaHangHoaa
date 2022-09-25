@@ -31,13 +31,23 @@ namespace CuaHangHoa
             connection = new SqlConnection(conn);
             connection.Open();
             HienThi();
-            
+            loadcombo();
         }
-
+        private void loadcombo()
+        {
+            string sqlSelect = "select *from LoaiTaiKhoan";
+            SqlCommand cmd = new SqlCommand(sqlSelect, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable table = new DataTable();
+            table.Load(dr);
+            cbbloai.DataSource = table;
+            cbbloai.DisplayMember = table.Columns["TenLoai"].ToString();
+            cbbloai.ValueMember = table.Columns["MaLoai"].ToString();
+        }
 
         private void HienThi()
         {
-            string sqlSelect = "select * from NhanVien";
+            string sqlSelect = " select MaNv as [Mã Nhân Viên], TenNv as [Tên Nhân Viên], SDT , TenTaiKhoan as [Tên Tài Khoản], MatKhau as [Mật Khẩu], TenLoai as [Tên Loại]  from NhanVien,LoaiTaiKhoan where NhanVien.MaLoai = LoaiTaiKhoan.MaLoai";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -51,7 +61,7 @@ namespace CuaHangHoa
 
             isThem = false;
             AnHienControl();
-            dgvnhanvien.Columns["TenNv"].Width = 150;
+            dgvnhanvien.Columns["Tên Nhân Viên"].Width = 150;
         }
         private void TimKiem()
         {
@@ -155,80 +165,7 @@ namespace CuaHangHoa
             AnHienControl();
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Thêm dữ liệu
-                if (isThem)
-                {
-                    if (txtManv.Text.Trim().Length == 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập mã nhân viên");
-                        txtManv.Focus();
-                        return;
-                    }
-                    // Kiem tra mã nhân viên có bị trùng không
-                    String sqlSelect = "Select * From NhanVien Where MaNv = @MaNv";
-                    SqlCommand commandSelect = new SqlCommand(sqlSelect, connection);
-                    commandSelect.Parameters.AddWithValue("MaNv", txtManv.Text.Trim());
-                    commandSelect.ExecuteNonQuery();
-                    SqlDataReader dr = commandSelect.ExecuteReader();
-                    DataTable table = new DataTable();
-                    table.Load(dr);
-                    if (table.Rows.Count > 0)
-                    {
-                        MessageBox.Show("Mã nhân viên " + txtManv.Text + " đã tồn tại. Vui lòng nhập lại");
-                        txtManv.Focus();
-                        return;
-                    }   
-                    if (KiemDuLieu())
-                    {
-                        String sqlThem = "INSERT INTO NhanVien VALUES (@MaNv, @TenNV, @SDT, @TenTaiKhoan, @MatKhau, @LoaiTaiKhoan)";
-                        SqlCommand command = new SqlCommand(sqlThem, connection);
-                        command.Parameters.AddWithValue("MaNv", txtManv.Text);
-                        command.Parameters.AddWithValue("TenNV", txttennv.Text);
-                        command.Parameters.AddWithValue("SDT", txtsdt.Text);
-                        command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
-                        command.Parameters.AddWithValue("MatKhau", txtmk.Text);
-                        command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("BẠN ĐÃ THÊM THÀNH CÔNG ", "THÔNG BÁO ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        HienThi();
-                    }
-                }
-                else // Cập nhật dữ liệu
-                {
-                    if (KiemDuLieu())
-                    {
-                        string SqlEdit = @"
-UPDATE NhanVien 
-SET LoaiTaiKhoan = @LoaiTaiKhoan,
-    TenNV = @TenNV,
-    SDT = @SDT,
-    TenTaiKhoan = @TenTaiKhoan,
-    MatKhau = @MatKhau 
-WHERE MaNv = @MaNv";
-                        SqlCommand command = new SqlCommand(SqlEdit, connection);
-                        command.Parameters.AddWithValue("MaNv", txtManv.Text);
-                        command.Parameters.AddWithValue("TenNV", txttennv.Text);
-                        command.Parameters.AddWithValue("SDT", txtsdt.Text);
-                        command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
-                        command.Parameters.AddWithValue("MatKhau", txtmk.Text);
-                        command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
-                        HienThi();
-                    }
-                }
-            }
-            catch
-            {
-                //LÕi CHƯA CHẠy ĐƯỢc 
-            }
-        }
-
+       
         private void btnxoa_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -293,15 +230,7 @@ WHERE MaNv = @MaNv";
             HienThiNhanVien(dgvnhanvien.CurrentRow.Index);
         }
 
-        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txttimkiemten_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void Reset()
         {
             txtManv.Text = "";
@@ -311,10 +240,77 @@ WHERE MaNv = @MaNv";
             txttentk.Text = "";
             cbbloai.Text = "";
         }
-
-        private void txtmk_TextChanged(object sender, EventArgs e)
+        private bool ThongTinHangHoa()
         {
+            {
 
+                if (txtManv.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập mã nhân viên ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtManv.Focus();
+                    return false;
+                }
+                if (txttennv.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập tên nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txttennv.Focus();
+                    return false;
+                }
+                if (txtsdt.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtsdt.Focus();
+                    return false;
+                }
+                if (txttentk.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập tên tài khoản ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txttentk.Focus();
+                    return false;
+                }
+                if (txtmk.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtmk.Focus();
+                    return false;
+                }
+                if (cbbloai.Text == "")
+                {
+                    MessageBox.Show("Vui lòng chọn loại nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cbbloai.Focus();
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        private void btnSua_Click_1(object sender, EventArgs e)
+        {
+            if (ThongTinHangHoa())
+            {
+                try
+                {
+                    string SqlEdit = "update NhanVien set TenNv = @TenNv ,SDT = @SDT, TenTaiKhoan = @TenTaiKhoan,MatKhau = @MatKhau, MaLoai = @MaLoai Where MaNv = @MaNv ";
+                    SqlCommand command = new SqlCommand(SqlEdit, connection);
+                    command.Parameters.AddWithValue("MaNv", txtManv.Text);
+                    command.Parameters.AddWithValue("TenNv", txttennv.Text);
+                    command.Parameters.AddWithValue("SDT", txtsdt.Text);
+                    command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
+                    command.Parameters.AddWithValue("MatKhau", txtmk.Text);
+                    command.Parameters.AddWithValue("MaLoai", cbbloai.SelectedValue.ToString());
+                    command.ExecuteNonQuery();
+                    HienThi();
+                    MessageBox.Show("BẠN ĐÃ SỬA THÀNH CÔNG", "THÔNG BÁO", MessageBoxButtons.OK);
+                }
+                catch
+                {
+                    MessageBox.Show("SỬA THẤT BẠI", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                btnThoat.Enabled = false;
+                btnthemm.Enabled = false;
+                btnxoa.Enabled = false;
+                btnHuy.Enabled = true;
+            }
         }
     }
 }

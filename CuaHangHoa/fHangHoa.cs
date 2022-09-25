@@ -262,5 +262,10 @@ namespace CuaHangHoa
             btnXoa.Enabled = true;
             btnThoat.Enabled = true;
         }
+
+        private void cbLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

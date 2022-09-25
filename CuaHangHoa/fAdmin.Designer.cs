@@ -43,7 +43,6 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnthemm = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.btnxoa = new System.Windows.Forms.Button();
             this.txttimkiemten = new System.Windows.Forms.TextBox();
             this.btntim = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSua = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvnhanvien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,9 +62,6 @@
             // 
             this.cbbloai.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbloai.FormattingEnabled = true;
-            this.cbbloai.Items.AddRange(new object[] {
-            "0",
-            "1"});
             this.cbbloai.Location = new System.Drawing.Point(916, 129);
             this.cbbloai.Name = "cbbloai";
             this.cbbloai.Size = new System.Drawing.Size(240, 33);
@@ -78,7 +75,6 @@
             this.txtmk.Name = "txtmk";
             this.txtmk.Size = new System.Drawing.Size(240, 34);
             this.txtmk.TabIndex = 20;
-            this.txtmk.TextChanged += new System.EventHandler(this.txtmk_TextChanged);
             // 
             // txttentk
             // 
@@ -151,10 +147,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnSua);
             this.panel4.Controls.Add(this.btnThoat);
             this.panel4.Controls.Add(this.btnHuy);
             this.panel4.Controls.Add(this.btnthemm);
-            this.panel4.Controls.Add(this.btnLuu);
             this.panel4.Controls.Add(this.btnxoa);
             this.panel4.Controls.Add(this.txttimkiemten);
             this.panel4.Controls.Add(this.btntim);
@@ -212,22 +208,6 @@
             this.btnthemm.UseVisualStyleBackColor = false;
             this.btnthemm.Click += new System.EventHandler(this.btnthemm_Click);
             // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Image = global::CuaHangHoa.Properties.Resources.Double_J_Design_Origami_Save1;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(161, 19);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(113, 49);
-            this.btnLuu.TabIndex = 6;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.UseVisualStyleBackColor = false;
-            this.btnLuu.Click += new System.EventHandler(this.btnSua_Click);
-            // 
             // btnxoa
             // 
             this.btnxoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -252,7 +232,6 @@
             this.txttimkiemten.Name = "txttimkiemten";
             this.txttimkiemten.Size = new System.Drawing.Size(351, 34);
             this.txttimkiemten.TabIndex = 9;
-            this.txttimkiemten.TextChanged += new System.EventHandler(this.txttimkiemten_TextChanged);
             this.txttimkiemten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttimkiemten_KeyDown);
             // 
             // btntim
@@ -332,6 +311,21 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // btnSua
+            // 
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Image = global::CuaHangHoa.Properties.Resources.Etherbrian_Webuosities_Fix_it1;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(154, 16);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(126, 54);
+            this.btnSua.TabIndex = 14;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click_1);
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -380,7 +374,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnthemm;
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnxoa;
         private System.Windows.Forms.TextBox txttimkiemten;
         private System.Windows.Forms.Button btntim;
@@ -392,5 +385,6 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnSua;
     }
 }
