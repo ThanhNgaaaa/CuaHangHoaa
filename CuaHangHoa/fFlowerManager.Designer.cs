@@ -134,7 +134,7 @@
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
-            this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
+        
             // 
             // hàngHóaToolStripMenuItem
             // 
@@ -216,7 +216,7 @@
             this.labelControl1.Size = new System.Drawing.Size(696, 39);
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "CHÀO  MỪNG  BẠN  ĐẾN  BFLOWER  SHOP";
-            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
+      
             // 
             // panel3
             // 
@@ -392,7 +392,7 @@
             this.labelControl2.Size = new System.Drawing.Size(147, 26);
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Mã Nhân Viên :";
-            this.labelControl2.Click += new System.EventHandler(this.labelControl2_Click);
+           
             // 
             // pictureEdit1
             // 
@@ -407,7 +407,7 @@
             this.pictureEdit1.Properties.ZoomPercent = 50D;
             this.pictureEdit1.Size = new System.Drawing.Size(360, 355);
             this.pictureEdit1.TabIndex = 6;
-            this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
+          
             // 
             // FlowerManager
             // 

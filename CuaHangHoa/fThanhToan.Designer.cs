@@ -213,7 +213,7 @@
             0,
             0,
             0});
-            this.nmSoLuong.ValueChanged += new System.EventHandler(this.nmSoLuong_ValueChanged);
+          
             // 
             // label7
             // 
@@ -234,6 +234,7 @@
             this.cmbMaHoa.Name = "cmbMaHoa";
             this.cmbMaHoa.Size = new System.Drawing.Size(313, 34);
             this.cmbMaHoa.TabIndex = 2;
+         
             // 
             // dtgv_HoaDon
             // 

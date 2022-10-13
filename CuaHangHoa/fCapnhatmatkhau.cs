@@ -11,10 +11,10 @@ using System.Windows.Forms;
 using System.Configuration;
 namespace CuaHangHoa
 {
-    public partial class Thông_tin_tài_khoản : Form
+    public partial class fCapNhatMatKhau : Form
     {
         SqlConnection connection;
-        public Thông_tin_tài_khoản()
+        public fCapNhatMatKhau()
         {
             InitializeComponent();
         }
@@ -67,7 +67,7 @@ namespace CuaHangHoa
             DataTable dt = new DataTable();
             da.Fill(dt);
             errorProviderCapNhatMK.Clear();
-            if (dt.Rows[0][0].ToString() == "1" && KiemTraThongTin())
+            if ( KiemTraThongTin())
             {
                 if(txtMKmoi.Text == txtNhapLaiMatkhau.Text)
                 {

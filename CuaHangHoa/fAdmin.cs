@@ -18,7 +18,8 @@ namespace CuaHangHoa
 
         SqlConnection connection;
         public static SqlConnection Connection { get; private set; }
-        private bool isThem = false; // true: thêm, false: cập nhật
+
+        private string maNV = fDangnhap.MA_USER;
 
         public fAdmin()
         {
@@ -44,10 +45,9 @@ namespace CuaHangHoa
             cbbloai.DisplayMember = table.Columns["TenLoai"].ToString();
             cbbloai.ValueMember = table.Columns["MaLoai"].ToString();
         }
-
         private void HienThi()
         {
-            string sqlSelect = " select MaNv as [Mã Nhân Viên], TenNv as [Tên Nhân Viên], SDT , TenTaiKhoan as [Tên Tài Khoản], MatKhau as [Mật Khẩu], TenLoai as [Tên Loại]  from NhanVien,LoaiTaiKhoan where NhanVien.MaLoai = LoaiTaiKhoan.MaLoai";
+            string sqlSelect = " select MaNv as [Mã Nhân Viên], TenNv as [Tên Nhân Viên], SDT , TenTaiKhoan as [Tên Tài Khoản], MatKhau as [Mật Khẩu], TenLoai as [Loại Tài Khoản]  from NhanVien,LoaiTaiKhoan where NhanVien.MaLoai = LoaiTaiKhoan.MaLoai";
             SqlCommand cmd = new SqlCommand(sqlSelect, connection);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable table = new DataTable();
@@ -59,19 +59,19 @@ namespace CuaHangHoa
                 dgvnhanvien.Rows[0].Selected = true;
             }
 
-            isThem = false;
-            AnHienControl();
+            
             dgvnhanvien.Columns["Tên Nhân Viên"].Width = 150;
+            dgvnhanvien.Columns["Loại Tài Khoản"].Width = 150;
+            dgvnhanvien.Columns["Tên Tài Khoản"].Width = 140;
         }
         private void TimKiem()
         {
             if (txttimkiemten.Text.Trim().Length > 0)
             {
-                // N là tìm kiếm ký tự có dấu
-                // % là tìm kiếm gần đúng
-                String sqlTimKiem = "Select * From NhanVien Where TenNv LIKE N'%' + @TenNv + '%'";
+               
+                String sqlTimKiem = "Select MaNv as [Mã Nhân Viên], TenNv as [Tên Nhân Viên], SDT , TenTaiKhoan as [Tên Tài Khoản], MatKhau as [Mật Khẩu], MaLoai as [Loại Tài Khoản] From NhanVien Where TenNv LIKE N'%' + @TenNv + '%'";
                 SqlCommand command = new SqlCommand(sqlTimKiem, connection);
-                command.Parameters.AddWithValue("TenNV", txttimkiemten.Text);
+                command.Parameters.AddWithValue("TenNv ", txttimkiemten.Text);
                 command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 DataTable table = new DataTable(sqlTimKiem);
@@ -87,109 +87,88 @@ namespace CuaHangHoa
                     MessageBox.Show("Không có nhân viên tên này");
                 }  
                 
-                isThem = false;
-                AnHienControl();
+          
+  
             }
-            else // Hiển thị tất cả dữ liệu khi tìm kiếm trống
+            else 
             {
                 HienThi();
             }    
         }
-
-        private void HienThiNhanVien(int SoDong)
-        {
-            txtManv.Text = dgvnhanvien.Rows[SoDong].Cells[0].Value.ToString();
-            txttennv.Text = dgvnhanvien.Rows[SoDong].Cells[1].Value.ToString();
-            txtsdt.Text = dgvnhanvien.Rows[SoDong].Cells[2].Value.ToString();
-            txttentk.Text = dgvnhanvien.Rows[SoDong].Cells[3].Value.ToString();
-            txtmk.Text = dgvnhanvien.Rows[SoDong].Cells[4].Value.ToString();
-            cbbloai.Text = dgvnhanvien.Rows[SoDong].Cells[5].Value.ToString();
-            dgvnhanvien.Columns[0].HeaderText = "Mã nhân viên";
-            dgvnhanvien.Columns[1].HeaderText = "Tên nhân viên";
-            dgvnhanvien.Columns[2].HeaderText = "Số điện thoại";
-            dgvnhanvien.Columns[3].HeaderText = "Tên tài khoản";
-            dgvnhanvien.Columns[4].HeaderText = "Mật khẩu";
-            dgvnhanvien.Columns[5].HeaderText = "Loại tài khoản";
-          
-        }
-
-        private void AnHienControl()
-        {
-            // Khi them du lieu
-            if (isThem)
-            {
-                txtManv.ReadOnly = false;
-                btnthemm.Enabled = false;
-                btnxoa.Enabled = false;
-                btnHuy.Enabled = true;
-                dgvnhanvien.Enabled = false;
-
-                txtManv.Text = "";
-                txttennv.Text = "";
-                txtsdt.Text = "";
-                txttentk.Text = "";
-                txtmk.Text = "";
-                cbbloai.Text = "";
-                txtManv.Focus();
-            }
-            else // Khi cap nhat du lieu
-            {
-                txtManv.ReadOnly = true;
-                btnthemm.Enabled = true;
-                btnxoa.Enabled = true;
-                btnHuy.Enabled = false;
-                dgvnhanvien.Enabled = true;
-            }
-        }
-
-        private bool KiemDuLieu()
-        {
-            if(txttennv.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Vui lòng nhập tên nhân viên");
-                txttennv.Focus();
-                return false;
-            }
-            if (txttentk.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập");
-                txttentk.Focus();
-                return false;
-            }
-            return true;
-        }
-
         private void btnthemm_Click(object sender, EventArgs e)
         {
-            isThem = true;
-            AnHienControl();
-        }
+            if (ThongTinHangHoa())
+                try
+                {
+                    String sqlThem = "INSERT into NhanVien VALUES (@MaNv,@TenNv ,@SDT,@TenTaiKhoan,@MatKhau,@TenLoai)";
+                    SqlCommand command = new SqlCommand(sqlThem, connection);
+                    command.Parameters.AddWithValue("MaNv", txtManv.Text);
+                    command.Parameters.AddWithValue("TenNv", txttennv.Text);
+                    command.Parameters.AddWithValue("SDT", txtsdt.Text);
+                    command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
+                    command.Parameters.AddWithValue("MatKhau", txtmk.Text);
+                    command.Parameters.AddWithValue("TenLoai", cbbloai.SelectedValue.ToString());
+                    command.ExecuteNonQuery();
+                    HienThi();
+                    MessageBox.Show("BẠN ĐÃ THÊM NHÂN VIÊN  THÀNH CÔNG ", "THÔNG BÁO", MessageBoxButtons.OK);
+                }
+                catch
+                {
+                    MessageBox.Show("THÊM THẤT BẠI", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            btnSua.Enabled = false;
+            btnxoa.Enabled = false;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = false;
+            txtManv.ReadOnly = false;
+            txtManv.Text = "";
+            txttennv.Text = "";
+            txtsdt.Text = "";
+            txttentk.Text = "";
+            txtmk.Text = "";
+            cbbloai.Text = "";
 
-       
+
+        }
         private void btnxoa_Click(object sender, EventArgs e)
         {
+
+            
+
             if (MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                string SqlXoa = "DELETE FROM NhanVien where MaNv = @MaNv";
-                SqlCommand command = new SqlCommand(SqlXoa, connection);
-                command.Parameters.AddWithValue("MaNv", txtManv.Text);
-                command.Parameters.AddWithValue("TenNV", txttennv.Text);
-                command.Parameters.AddWithValue("SDT", txtsdt.Text);
-                command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
-                command.Parameters.AddWithValue("MatKhau", txtmk.Text);
-                command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
-                command.ExecuteNonQuery();
-                MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
-                HienThi();
-                Reset();
+                if(txtManv.Text != Variables.MaNv)
+                {
+                    string SqlXoa = "DELETE FROM NhanVien where MaNv = @MaNv";
+                    SqlCommand command = new SqlCommand(SqlXoa, connection);
+                    command.Parameters.AddWithValue("MaNv", txtManv.Text);
+                    command.Parameters.AddWithValue("TenNV", txttennv.Text);
+                    command.Parameters.AddWithValue("SDT", txtsdt.Text);
+                    command.Parameters.AddWithValue("TenTaiKhoan", txttentk.Text);
+                    command.Parameters.AddWithValue("MatKhau", txtmk.Text);
+                    command.Parameters.AddWithValue("LoaiTaiKhoan ", cbbloai.Text);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("BẠN ĐÃ XÓA THÀNH CÔNG ! ", "THÔNG BÁO ", MessageBoxButtons.OK);
+                    HienThi();
+                    Reset();
+                }
+                else
+                {
+                    MessageBox.Show("BẠN KHÔNG THỂ XÓA");
+                }
+               
+               
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            isThem = false;
-            AnHienControl();
-            HienThiNhanVien(dgvnhanvien.CurrentRow.Index);
+
+            btnthemm.Enabled = true;
+            btnSua.Enabled = true;
+            btnxoa.Enabled = true;
+            btnThoat.Enabled = true;
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -225,12 +204,7 @@ namespace CuaHangHoa
             }
         }
 
-        private void dgvnhanvien_SelectionChanged(object sender, EventArgs e)
-        {
-            HienThiNhanVien(dgvnhanvien.CurrentRow.Index);
-        }
-
-
+        
         private void Reset()
         {
             txtManv.Text = "";
@@ -312,5 +286,21 @@ namespace CuaHangHoa
                 btnHuy.Enabled = true;
             }
         }
+
+        private void dgvnhanvien_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            txtManv.ReadOnly = true;
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvnhanvien.Rows[e.RowIndex];
+            txtManv.Text = Convert.ToString(row.Cells["Mã Nhân Viên"].Value);
+            txttennv.Text = Convert.ToString(row.Cells["Tên Nhân Viên"].Value);
+            txtsdt.Text = Convert.ToString(row.Cells["SDT"].Value);
+            txttentk.Text = Convert.ToString(row.Cells["Tên Tài Khoản"].Value);
+            txtmk.Text = Convert.ToString(row.Cells["Mật Khẩu"].Value);
+            cbbloai.Text = Convert.ToString(row.Cells["Loại Tài Khoản"].Value);
+           
+        }
+
+        
     }
 }

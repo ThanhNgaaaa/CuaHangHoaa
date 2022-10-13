@@ -341,9 +341,6 @@ namespace CuaHangHoa
             }
         }
 
-        private void nmSoLuong_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

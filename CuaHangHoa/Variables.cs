@@ -9,5 +9,6 @@ namespace CuaHangHoa
     public class Variables
     {
         public static string TenNV = string.Empty;
+        public static string MaNv = string.Empty;
     }
 }
